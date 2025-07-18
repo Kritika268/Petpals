@@ -85,7 +85,29 @@ const VisionMission = () => {
         </div>
       </section>
 
-      
+      {/* Vision & Core Beliefs */}
+      <section className="py-16 px-4">
+        <div className="container mx-auto grid md:grid-cols-2 gap-10">
+          <div className="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition-all">
+            <div className="flex items-center mb-4">
+              <div className="w-12 h-12 bg-emerald-100 rounded-lg flex justify-center items-center mr-4">
+                <FaStar className="text-xl text-emerald-600" />
+              </div>
+              <h3 className="text-2xl font-semibold text-gray-900">
+                Our Vision
+              </h3>
+            </div>
+            <p className="text-gray-600">
+              To create a space where pet wellness meets human warmth — pushing
+              boundaries in veterinary care while staying rooted in empathy.
+            </p>
+          </div>
+        </div>
+
+        <div>
+            
+        </div>
+      </section>
     </div>
   );
 };
