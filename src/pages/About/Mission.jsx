@@ -1,5 +1,3 @@
-"use client";
-
 import {
   FaHeart,
   FaShieldAlt,
@@ -41,19 +39,6 @@ const Mission = () => {
           </h1>
           <p className="text-xl md:text-2xl font-light max-w-3xl mx-auto opacity-95 animate-fade-in-delayed">
             Healing pets, empowering owners — we're here to care, comfort, and
-            connect.
-          </p>
-        </div>
-
-        <div className="relative px-6 py-24 max-w-6xl mx-auto text-center">
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-white/20 rounded-full backdrop-blur-sm mb-6">
-            <FaLeaf className="text-3xl text-white" />
-          </div>
-          <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-6">
-            Our <span className="text-[#f1d07a]">Purpose</span>
-          </h1>
-          <p className="text-xl md:text-2xl font-light max-w-3xl mx-auto opacity-95">
-            Healing pets, empowering owners — we’re here to care, comfort, and
             connect.
           </p>
         </div>
