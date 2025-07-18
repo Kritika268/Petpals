@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { LiaDogSolid } from "react-icons/lia";
 import Locations from "./Locations";
 import {FaPhoneAlt} from "react-icons/fa";
 import ScrollToTop from "./ScrollToTop";
