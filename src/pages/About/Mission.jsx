@@ -7,10 +7,11 @@ import {
   FaLeaf,
 } from "react-icons/fa";
 import React from "react";
+import image from "../../assets/image.png";
 
 const VisionMission = () => {
   return (
-    <div className="big-zinc-50 min-h-screen">
+    <div className="bg-zinc-50 min-h-screen">
       {/* Intro Section */}
       <section className="bg-white py-20">
         <div className="container mx-auto px-6">
@@ -54,7 +55,7 @@ const VisionMission = () => {
 
       {/* About Our Mission */}
       <section className="py-20 px-4">
-        <div container mx-auto max-w-6xl>
+        <div className="container mx-auto max-w-6xl">
           <div className="grid md:grid-cols-2 gap-10 items-center">
             <div>
               <h2 className="text-3xl font-semibold text-gray-800 mb-4">
@@ -73,7 +74,7 @@ const VisionMission = () => {
             </div>
             <div className="relative">
               <img
-                src="/placeholder.svg?height=400&width=500"
+                src={image}
                 alt="Doctor examining a pet"
                 className="rounded-xl shadow-xl w-full"
               />
@@ -104,9 +105,7 @@ const VisionMission = () => {
           </div>
         </div>
 
-        <div>
-            
-        </div>
+        <div></div>
       </section>
     </div>
   );
