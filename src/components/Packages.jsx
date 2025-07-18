@@ -1,4 +1,3 @@
-
 const Packages = ({
   title,
   price,

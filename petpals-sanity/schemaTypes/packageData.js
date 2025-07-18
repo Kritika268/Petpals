@@ -1,4 +1,3 @@
-// schemas/packages.js
 export default {
   name: 'package',
   type: 'document',

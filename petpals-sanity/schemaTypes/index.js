@@ -5,6 +5,7 @@ import serviceData from './serviceData'
 import AppointmentData from './AppointmentData'
 import DoctorsMeetData from './DoctorsMeetData'
 import testimonialData from './testimonialData'
+import locationGroup from './locationGroup'
 
 export const schemaTypes = [
   heroSlide,
@@ -14,4 +15,5 @@ export const schemaTypes = [
   AppointmentData,
   DoctorsMeetData,
   testimonialData,
+  locationGroup
 ]

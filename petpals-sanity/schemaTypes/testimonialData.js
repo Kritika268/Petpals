@@ -1,4 +1,3 @@
-// schemas/testimonial.js
 export default {
   name: 'testimonial',
   title: 'Testimonial',

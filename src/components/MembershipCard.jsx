@@ -1,4 +1,5 @@
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
+import { Link } from "react-router-dom";
 
 const MembershipCard = ({ time, price, hoverColor, dimmed, benefits }) => {
   return (
@@ -34,9 +35,11 @@ const MembershipCard = ({ time, price, hoverColor, dimmed, benefits }) => {
         </div>
         
         <div className="pt-4">
-          <button className="w-full bg-[#b98a32] font-bold hover:bg-[#f7f3ea] hover:text-[#821b1f] text-[#f7f3ea] py-2 px-4 rounded-3xl transition duration-200 border border-transparent hover:border-[#821b1f]">
-            Choose
-          </button>
+          <Link to="/plans">
+            <button className="w-full bg-[#b98a32] font-bold hover:bg-[#f7f3ea] hover:text-[#821b1f] text-[#f7f3ea] py-2 px-4 rounded-3xl transition duration-200 border border-transparent hover:border-[#821b1f]">
+              Choose
+            </button>
+          </Link>
         </div>
       </div>
     </div>
