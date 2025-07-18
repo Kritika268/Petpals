@@ -1,114 +1,27 @@
 import {
   FaHeart,
   FaShieldAlt,
-  FaStar,
   FaPaw,
   FaStethoscope,
   FaLeaf,
+  FaEye,
+  FaHandHoldingHeart,
 } from "react-icons/fa";
-import React from "react";
 
-const VisionMission = () => {
+const MissionStatement = () => {
   return (
-    <div className="big-zinc-50 min-h-screen">
-      {/* Intro Section */}
-      <section className="bg-white py-20">
-        <div className="container mx-auto px-6">
-          <div className="text-center max-w-3xl mx-auto">
-            <div className="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-6">
-              <FaLeaf className="text-3xl text-emerald-600" />
-            </div>
-            <h1 className="text-5xl font-extrabold text-gray-900 mb-4">
-              Our Purpose
-            </h1>
-            <p className="text-lg text-gray-600 leading-relaxed">
-              At DCC Pets, we go beyond treatment — we believe in nurturing
-              relationships between people and their pets through heartfelt
-              veterinary care.
-            </p>
-          </div>
+    <div className="bg-[#faf5ef] min-h-screen">
+      {/* Hero Section */}
+      <div className="relative bg-gradient-to-tr from-[#7a181c] via-[#a32b30] to-[#c59c45] text-white overflow-hidden">
+        <div className="absolute inset-0 bg-black/10"></div>
+        <div className="absolute inset-0">
+          <div className="absolute top-28 left-10 w-28 h-28 bg-white opacity-10 rounded-full"></div>
+          <div className="absolute bottom-20 right-10 w-40 h-40 bg-white opacity-5 rounded-full"></div>
+          <div className="absolute top-[40%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-white opacity-5 rounded-full"></div>
         </div>
-      </section>
-
-      {/* Call to Action – moved upward to engage faster */}
-      <section className="py-12 px-4">
-        <div className="bg-white max-w-5xl mx-auto p-10 rounded-2xl shadow-xl text-center">
-          <h3 className="text-3xl font-bold text-gray-900 mb-4">
-            Feel the Difference
-          </h3>
-          <p className="text-gray-600 mb-6">
-            {" "}
-            Become part of a community that trusts DCC for transparency,
-            dedication, and top-tier animal care.
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <button className="bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-3 rounded-xl shadow-md font-medium">
-              Schedule a Visit
-            </button>
-            <button className="border-2 border-emerald-500 hover:bg-emerald-500 hover:text-white text-emerald-600 px-6 py-3 rounded-xl font-medium">
-              Explore More
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* About Our Mission */}
-      <section className="py-20 px-4">
-        <div container mx-auto max-w-6xl>
-          <div className="grid md:grid-cols-2 gap-10 items-center">
-            <div>
-              <h2 className="text-3xl font-semibold text-gray-800 mb-4">
-                Why we exist
-              </h2>
-              <p className="text-gray-700 mb-4">
-                Our team thrives on delivering medical excellence with a heart.
-                We aim to support pet parents with accessible care and a warm
-                experience every time.
-              </p>
-              <p className="text-gray-700">
-                Through skilled hands and listening hearts, we bring healing to
-                furry companions while keeping their humans involved every step
-                of the way.
-              </p>
-            </div>
-            <div className="relative">
-              <img
-                src="/placeholder.svg?height=400&width=500"
-                alt="Doctor examining a pet"
-                className="rounded-xl shadow-xl w-full"
-              />
-              <div className="absolute -bottom-5 -right-5 bg-emerald-500 text-white p-4 rounded-full shadow-lg">
-                <FaPaw className="text-2xl" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Vision & Core Beliefs */}
-      <section className="py-16 px-4">
-        <div className="container mx-auto grid md:grid-cols-2 gap-10">
-          <div className="bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition-all">
-            <div className="flex items-center mb-4">
-              <div className="w-12 h-12 bg-emerald-100 rounded-lg flex justify-center items-center mr-4">
-                <FaStar className="text-xl text-emerald-600" />
-              </div>
-              <h3 className="text-2xl font-semibold text-gray-900">
-                Our Vision
-              </h3>
-            </div>
-            <p className="text-gray-600">
-              To create a space where pet wellness meets human warmth — pushing
-              boundaries in veterinary care while staying rooted in empathy.
-            </p>
-          </div>
-        </div>
-
-        <div>
-            
-        </div>
-      </section>
+      </div>
     </div>
   );
 };
-export default VisionMission;
+
+export default MissionStatement;
