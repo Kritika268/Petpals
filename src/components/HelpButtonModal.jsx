@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { FaQuestionCircle, FaTimes } from 'react-icons/fa';
 
 export default function HelpButtonModal() {

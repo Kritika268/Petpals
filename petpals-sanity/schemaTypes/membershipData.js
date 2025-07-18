@@ -1,4 +1,3 @@
-// schemas/membership.js
 export default {
   name: 'membership',
   title: 'Membership',

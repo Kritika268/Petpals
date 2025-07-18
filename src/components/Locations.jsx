@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FaMapMarkerAlt, FaClock } from "react-icons/fa";
 import { client } from "../lib/sanity";
 import { getLocationsQuery } from "../lib/queries";
