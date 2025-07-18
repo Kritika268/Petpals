@@ -51,6 +51,41 @@ const VisionMission = () => {
           </div>
         </div>
       </section>
+
+      {/* About Our Mission */}
+      <section className="py-20 px-4">
+        <div container mx-auto max-w-6xl>
+          <div className="grid md:grid-cols-2 gap-10 items-center">
+            <div>
+              <h2 className="text-3xl font-semibold text-gray-800 mb-4">
+                Why we exist
+              </h2>
+              <p className="text-gray-700 mb-4">
+                Our team thrives on delivering medical excellence with a heart.
+                We aim to support pet parents with accessible care and a warm
+                experience every time.
+              </p>
+              <p className="text-gray-700">
+                Through skilled hands and listening hearts, we bring healing to
+                furry companions while keeping their humans involved every step
+                of the way.
+              </p>
+            </div>
+            <div className="relative">
+              <img
+                src="/placeholder.svg?height=400&width=500"
+                alt="Doctor examining a pet"
+                className="rounded-xl shadow-xl w-full"
+              />
+              <div className="absolute -bottom-5 -right-5 bg-emerald-500 text-white p-4 rounded-full shadow-lg">
+                <FaPaw className="text-2xl" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      
     </div>
   );
 };
