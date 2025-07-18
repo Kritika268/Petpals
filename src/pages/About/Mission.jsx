@@ -29,6 +29,28 @@ const VisionMission = () => {
           </div>
         </div>
       </section>
+
+      {/* Call to Action – moved upward to engage faster */}
+      <section className="py-12 px-4">
+        <div className="bg-white max-w-5xl mx-auto p-10 rounded-2xl shadow-xl text-center">
+          <h3 className="text-3xl font-bold text-gray-900 mb-4">
+            Feel the Difference
+          </h3>
+          <p className="text-gray-600 mb-6">
+            {" "}
+            Become part of a community that trusts DCC for transparency,
+            dedication, and top-tier animal care.
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <button className="bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-3 rounded-xl shadow-md font-medium">
+              Schedule a Visit
+            </button>
+            <button className="border-2 border-emerald-500 hover:bg-emerald-500 hover:text-white text-emerald-600 px-6 py-3 rounded-xl font-medium">
+              Explore More
+            </button>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
