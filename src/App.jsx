@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import Telehealth from "./pages/Telehealth";
 import Referral from "./pages/Referral";
+import Plans from "./pages/Plans"
 
 // About pages
 import Mission from "./pages/About/Mission";
@@ -26,6 +27,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/telehealth" element={<Telehealth />} />
           <Route path="/referral" element={<Referral />} />
+          <Route path="/plans" element={<Plans />} />
 
           {/* About Routes */}
           <Route path="/about/team" element={<Team />} />
@@ -37,6 +39,7 @@ function App() {
           <Route path="/services/offerings" element={<Offerings />} />
           <Route path="/services/packages" element={<Packages />} />
           <Route path="/services/recommendations" element={<Recommendations />} />
+          
         </Routes>
       </div>
       <Footer />
