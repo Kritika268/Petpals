@@ -1,6 +1,17 @@
-import blockContent from './blockContent'
-import category from './category'
-import post from './post'
-import author from './author'
+import heroSlide from './heroSlide'
+import packageData from './packageData'
+import membershipData from './membershipData'
+import serviceData from './serviceData'
+import AppointmentData from './AppointmentData'
+import DoctorsMeetData from './DoctorsMeetData'
+import testimonialData from './testimonialData'
 
-export const schemaTypes = [post, author, category, blockContent]
+export const schemaTypes = [
+  heroSlide,
+  packageData,
+  membershipData,
+  serviceData,
+  AppointmentData,
+  DoctorsMeetData,
+  testimonialData,
+]
