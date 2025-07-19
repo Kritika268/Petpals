@@ -73,7 +73,7 @@ const Blog = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#f7f3ea] overflow-hidden">
+    <div className=" bg-[#b98a32] w-screen relative left-1/2 right-1/2 -mx-[50vw] overflow-hidden">
       {/* Floating Background Elements */}
       <div className="fixed inset-0 pointer-events-none z-0">
         <div className="absolute top-20 left-10 w-3 h-3 bg-[#b98a32] rounded-full animate-float-gentle opacity-30"></div>
@@ -96,7 +96,7 @@ const Blog = () => {
       </div>
 
       {/* Hero Section */}
-      <div className="relative bg-gradient-to-br from-[#821b1f] via-[#9d2429] to-[#b98a32] text-white overflow-hidden">
+      <div className="relative bg-gradient-to-br from-[#821b1f] via-[#9d2429] to-[#b98a32] text-white overflow-hidden py-6">
         {/* Enhanced Animated Background Elements */}
         <div className="absolute inset-0">
           <div className="absolute top-20 left-20 w-32 h-32 bg-white opacity-8 rounded-full animate-pulse-ultra-slow"></div>
@@ -123,7 +123,7 @@ const Blog = () => {
       </div>
 
       {/* Main Content */}
-      <div className="container mx-auto px-4 py-16 lg:py-24 relative z-10">
+      <div className="px-4 py-16 lg:py-24 relative z-10">
         <div className="max-w-7xl mx-auto">
           {/* Featured Post */}
           <div className="mb-16 lg:mb-24 animate-fade-in-up">
@@ -230,7 +230,7 @@ const Blog = () => {
           {/* Regular Blog Posts Grid */}
           <div className="mb-20">
             <h3 className="text-3xl lg:text-5xl font-black text-[#821b1f] mb-16 text-center animate-slide-up">
-              Latest <span className="text-[#b98a32]">Articles</span>
+              Latest Articles
             </h3>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">

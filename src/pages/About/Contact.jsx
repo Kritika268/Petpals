@@ -433,9 +433,8 @@ const Contact = () => {
       `}</style>
 
       <div
-        className="min-h-screen bg-pattern font-sans overflow-x-hidden"
+        className="bg-[#b98a32] w-screen relative left-1/2 right-1/2 -mx-[50vw] overflow-hidden"
         style={{
-          backgroundColor: "#f7f3ea",
           fontFamily: "Inter, Lato, sans-serif",
         }}
       >
@@ -463,7 +462,7 @@ const Contact = () => {
             </div>
             <p
               className="text-responsive-md max-w-3xl mx-auto leading-relaxed mb-4"
-              style={{ color: "#8b7355" }}
+              style={{ color: "#f7f3ea" }}
             >
               We're here for your furry companions
             </p>
