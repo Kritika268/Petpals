@@ -133,7 +133,6 @@ const Mission = () => {
                   using the latest tools in veterinary science.
                 </p>
               </div>
-
               <div className="text-center">
                 <div className="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center mx-auto mb-5 backdrop-blur-sm">
                   <FaHeart className="text-2xl" />
@@ -146,7 +145,6 @@ const Mission = () => {
                   genuine compassion.
                 </p>
               </div>
-
               <div className="text-center">
                 <div className="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center mx-auto mb-5 backdrop-blur-sm">
                   <FaShieldAlt className="text-2xl" />
