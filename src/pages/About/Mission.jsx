@@ -610,7 +610,7 @@ const Mission = () => {
           animation: slide-up 0.8s ease-out;
         }
         .animate-slide-up-delayed {
-          animation: slide-up-delayed 0.8s ease-out 0.3s both;
+          animation: slide-up-delayed 0.8s ease-in-out 0.3s both;
         }
         .animate-pulse-ultra-slow {
           animation: pulse-ultra-slow 8s ease-in-out infinite;
