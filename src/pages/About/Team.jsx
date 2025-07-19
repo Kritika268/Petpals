@@ -256,7 +256,7 @@ const Team = () => {
 
                 <div
                   className={`absolute inset-0 bg-gradient-to-t from-[#821b1f]/8 to-transparent transition-opacity duration-700 ease-out pointer-events-none ${
-                    hoveredCard === member.id ? "opacity-100" : "opacity-0"
+                    hoveredCard === member._id ? "opacity-100" : "opacity-0"
                   }`}
                 ></div>
               </div>
@@ -304,7 +304,7 @@ const Team = () => {
                     </button>
                   </Link>
 
-                  <Link to="/contact">
+                  <Link to="/about/contact">
                     <button className="border-4 border-white text-white px-12 py-6 rounded-2xl text-2xl font-bold hover:bg-white hover:text-[#821b1f] transition-all duration-700 ease-out transform hover:scale-110 hover:-translate-y-3 shadow-3xl hover:shadow-4xl group/btn">
                       <span className="group-hover/btn:animate-pulse-smooth">
                         Contact Us

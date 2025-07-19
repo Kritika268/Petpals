@@ -26,7 +26,6 @@ import Blog from "./pages/About/Blog";
 import Contact from "./pages/About/Contact";
 
 // Services Pages
-import Offerings from "./pages/Services/Offerings";
 import Packages from "./pages/Services/Packages";
 import Recommendations from "./pages/Services/Recommendations";
 
@@ -64,7 +63,6 @@ function AppContent() {
           <Route path="/register" element={<Register />} />
           <Route path="/appointment" element={<Appointment />} />
           <Route path="/service" element={<Service />} />
-          <Route path="/contact" element={<Contact />} />
 
           {/* About */}
           <Route path="/about/team" element={<Team />} />
@@ -73,7 +71,6 @@ function AppContent() {
           <Route path="/about/contact" element={<Contact />} />
 
           {/* Services */}
-          <Route path="/services/offerings" element={<Offerings />} />
           <Route path="/services/packages" element={<Packages />} />
           <Route path="/services/recommendations" element={<Recommendations />} />
 
