@@ -524,7 +524,7 @@ const Packages = () => {
       `}</style>
 
       <div
-        className="min-h-screen bg-pattern font-sans overflow-x-hidden"
+        className="bg-[#b98a32] min-h-screen w-screen relative left-1/2 right-1/2 -mx-[50vw] overflow-hidden pb-10"
         style={{ backgroundColor: "#f7f3ea", fontFamily: "Inter, Lato, sans-serif" }}
       >
         {/* Header Section */}
