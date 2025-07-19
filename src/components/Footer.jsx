@@ -160,9 +160,8 @@ function Footer() {
         </div>
         
         <div className="bg-[#821b1f] py-6 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between space-y-4 lg:space-y-0 lg:space-x-8 mb-4 lg:mb-0 w-full">
-                {/* Responsive layout container for all items */}
-                <div className="flex flex-row justify-between items-start w-full">
+            <div className="max-w-7xl mx-auto space-y-4 lg:space-y-0 lg:space-x-8 mb-4 lg:mb-0 w-full">
+                <div className="flex flex-col md:flex-row justify-between items-start w-full">
                     
                     {/* Left side: Paragraph + Icons stacked */}
                     <div className="flex flex-col space-y-2 max-w-xs">
