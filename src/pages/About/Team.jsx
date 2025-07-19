@@ -15,6 +15,7 @@ import sarahImage from "../../assets/Dr. Sarah Johnson.jpg";
 import michaelImage from "../../assets/Dr. Michael Chen.jpg";
 import emilyImage from "../../assets/Dr. Emily Rodriguez.jpg";
 import lisaImage from "../../assets/Lisa Thompson.jpg";
+import { Link } from "react-router-dom";
 
 const Team = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -89,7 +90,7 @@ const Team = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#f7f3ea] overflow-hidden">
+    <div className="full-width-breakout bg-[#b98a32] pb-2">
       {/*Background Elements */}
       <div className="fixed inset-0 pointer-events-none z-0">
         <div className="absolute top-20 left-10 w-4 h-4 bg-[#b98a32] rounded-full animate-float-smooth opacity-25"></div>
@@ -116,7 +117,7 @@ const Team = () => {
       </div>
 
       {/* Hero Section */}
-      <div className="relative bg-gradient-to-br from-[#821b1f] via-[#9d2429] to-[#b98a32] text-white overflow-hidden">
+      <div className="relative bg-gradient-to-br from-[#821b1f] via-[#9d2429] to-[#b98a32] text-white overflow-hidden pb-4">
         <div className="absolute inset-0">
           <div className="absolute top-20 left-20 w-48 h-48 bg-white opacity-4 rounded-full animate-pulse-ultra-smooth"></div>
           <div className="absolute bottom-20 right-20 w-64 h-64 bg-white opacity-3 rounded-full animate-float-ultra-gentle"></div>
@@ -172,8 +173,8 @@ const Team = () => {
       </div>
 
       {/*Team Members Section */}
-      <div className="container mx-auto px-4 py-24 lg:py-32 relative z-10">
-        <div className="max-w-8xl mx-auto">
+      <div className="px-4 py-24 lg:py-32 relative z-10">
+        <div className="max-w-7xl mx-auto">
           {/* Section Introduction */}
           <div
             className={`text-center mb-24 transition-all duration-1000 ease-out ${
@@ -185,11 +186,11 @@ const Team = () => {
           >
             <h2 className="text-5xl lg:text-6xl font-black text-[#821b1f] mb-8">
               Dedicated{" "}
-              <span className="text-[#b98a32] animate-glow-subtle">
+              <span className="text-[#821b1f] animate-glow-subtle">
                 Professionals
               </span>
             </h2>
-            <p className="text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-2xl text-[#f7f3ea] max-w-4xl mx-auto leading-relaxed">
               Our team combines years of experience with genuine passion for
               animal welfare, ensuring your beloved pets receive the highest
               standard of care with compassion and expertise.
@@ -197,7 +198,7 @@ const Team = () => {
           </div>
 
           {/* Team Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 lg:gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
             {teamMembers.map((member, index) => (
               <div
                 key={member.id}
@@ -345,17 +346,21 @@ const Team = () => {
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-8 justify-center">
-                  <button className="bg-white text-[#821b1f] px-12 py-6 rounded-2xl text-2xl font-bold hover:bg-[#f7f3ea] transition-all duration-700 ease-out transform hover:scale-110 hover:-translate-y-3 shadow-3xl hover:shadow-4xl group/btn">
-                    <span className="group-hover/btn:animate-pulse-smooth">
-                      Book Consultation
-                    </span>
-                  </button>
+                  <Link to="/appointment">
+                    <button className="bg-white text-[#821b1f] px-12 py-6 rounded-2xl text-2xl font-bold hover:bg-[#f7f3ea] transition-all duration-700 ease-out transform hover:scale-110 hover:-translate-y-3 shadow-3xl hover:shadow-4xl group/btn">
+                      <span className="group-hover/btn:animate-pulse-smooth">
+                        Book Consultation
+                      </span>
+                    </button>
+                  </Link>
 
-                  <button className="border-4 border-white text-white px-12 py-6 rounded-2xl text-2xl font-bold hover:bg-white hover:text-[#821b1f] transition-all duration-700 ease-out transform hover:scale-110 hover:-translate-y-3 shadow-3xl hover:shadow-4xl group/btn">
-                    <span className="group-hover/btn:animate-pulse-smooth">
-                      Contact Us
-                    </span>
-                  </button>
+                  <Link to="/contact">
+                    <button className="border-4 border-white text-white px-12 py-6 rounded-2xl text-2xl font-bold hover:bg-white hover:text-[#821b1f] transition-all duration-700 ease-out transform hover:scale-110 hover:-translate-y-3 shadow-3xl hover:shadow-4xl group/btn">
+                      <span className="group-hover/btn:animate-pulse-smooth">
+                        Contact Us
+                      </span>
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>
