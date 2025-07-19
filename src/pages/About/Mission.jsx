@@ -11,7 +11,7 @@ import image from "../../assets/image.png";
 
 const Mission = () => {
   return (
-    <div className="bg-[#faf5ef] min-h-screen overflow-hidden">
+    <div className="bg-[#faf5ef] min-h-screen w-screen relative left-1/2 right-1/2 -mx-[50vw] overflow-hidden">
       {/* Floating Background Elements */}
       <div className="fixed inset-0 pointer-events-none z-0">
         <div className="absolute top-20 left-10 w-3 h-3 bg-[#c59c45] rounded-full animate-float-1 opacity-30"></div>
@@ -435,7 +435,7 @@ const Mission = () => {
         }
         @keyframes heartbeat {
           0%,
-          100% {
+          git pull origin develop 100% {
             transform: scale(1);
           }
           25% {

@@ -4,7 +4,7 @@ import {
   FaGithub,
   FaLinkedin,
   FaInstagram,
-  FaStethoscope,  
+  FaStethoscope,
   FaHeart,
   FaPaw,
   FaUserMd,
