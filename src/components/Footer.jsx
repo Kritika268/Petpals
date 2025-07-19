@@ -32,10 +32,10 @@ function Footer() {
                 <div>
                     <h3 className="text-lg font-semibold mb-2">Quick Links</h3>
                     <ul className="space-y-1 text-sm text-[#821b1f]">
-                        <li><Link to="/about" className="hover:text-[#b98a32] transition-colors duration-300">About</Link></li>
-                        <li><Link to="/services" className="hover:text-[#b98a32] transition-colors duration-300">Our Services</Link></li>
-                        <li><Link to="/team" className="hover:text-[#b98a32] transition-colors duration-300">Our Team</Link></li>
-                        <li><Link to="/contact" className="hover:text-[#b98a32] transition-colors duration-300">Contact Us</Link></li>
+                        <li><Link to="/about/mission" className="hover:text-[#b98a32] transition-colors duration-300">Our Mission</Link></li>
+                        <li><Link to="/service" className="hover:text-[#b98a32] transition-colors duration-300">Our Services</Link></li>
+                        <li><Link to="/about/team" className="hover:text-[#b98a32] transition-colors duration-300">Our Team</Link></li>
+                        <li><Link to="/about/contact" className="hover:text-[#b98a32] transition-colors duration-300">Contact Us</Link></li>
                     </ul>
                 </div>
 
