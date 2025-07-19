@@ -32,7 +32,7 @@ const BookAppointment = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto mt-10 rounded-3xl shadow-lg p-6 bg-[#821b1f] transition-all duration-300">
+    <div className="max-w-7xl mx-5 mt-10 rounded-3xl shadow-lg p-6  bg-[#821b1f] transition-all duration-300">
       <h2 className="text-2xl font-bold mb-6 text-center text-[#f7f3ea]">Book an Appointment</h2>
 
       <div className="flex flex-col lg:flex-row lg:items-start lg:space-x-4 space-y-4 lg:space-y-0">
