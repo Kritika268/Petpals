@@ -44,7 +44,7 @@ const Mission = () => {
         </div>
       </div>
 
-      {/* Content */}
+      {/* Main Content */}
       <div className="container mx-auto px-4 py-20">
         {/* Core Belief */}
         <div className="rounded-3xl shadow-xl p-10 md:p-14 bg-white border-l-[10px] border-[#b98a32] mb-20">
@@ -59,7 +59,6 @@ const Mission = () => {
                 <FaPaw className="text-2xl" />
               </div>
             </div>
-
             <div>
               <div className="flex items-center mb-6">
                 <div className="w-14 h-14 bg-[#7a181c] rounded-full flex items-center justify-center mr-4">
@@ -98,7 +97,6 @@ const Mission = () => {
               community service.
             </p>
           </div>
-
           <div className="bg-white p-10 rounded-2xl shadow-xl border-l-8 border-[#c59c45] hover:-translate-y-2 transition-all duration-300">
             <div className="flex items-center mb-6">
               <div className="w-14 h-14 bg-gradient-to-br from-[#c59c45] to-[#e9cd6c] rounded-xl flex items-center justify-center mr-4">
@@ -178,188 +176,6 @@ const Mission = () => {
             </button>
             <button className="border-2 border-[#c59c45] text-[#c59c45] px-8 py-4 rounded-xl font-medium hover:bg-[#c59c45] hover:text-white transition">
               Know Us Better
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Content */}
-      <div className="container mx-auto px-4 py-20 relative z-10">
-        {/* Core Belief */}
-        <div className="rounded-3xl shadow-xl p-10 md:p-14 bg-white border-l-[10px] border-[#b98a32] mb-20 animate-slide-in-left hover:shadow-2xl hover:-translate-y-2 transition-all duration-700 group">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="relative animate-slide-in-left-delayed">
-              <img
-                src={image}
-                alt="Animal healthcare"
-                className="rounded-2xl shadow-lg w-full group-hover:scale-105 transition-transform duration-700"
-              />
-              <div className="absolute bottom-0 right-0 bg-[#b98a32] text-white p-5 rounded-tl-2xl shadow-xl animate-bounce-in group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
-                <FaPaw className="text-2xl animate-wiggle" />
-              </div>
-              {/* Floating decorative elements */}
-              <div className="absolute -top-2 -left-2 w-6 h-6 bg-[#c59c45] rounded-full animate-ping opacity-30"></div>
-              <div className="absolute -bottom-2 -right-2 w-4 h-4 bg-[#7a181c] rounded-full animate-pulse opacity-40"></div>
-            </div>
-            <div className="animate-slide-in-right">
-              <div className="flex items-center mb-6 group/header">
-                <div className="w-14 h-14 bg-[#7a181c] rounded-full flex items-center justify-center mr-4 group-hover/header:scale-110 group-hover/header:rotate-6 transition-all duration-500 animate-bounce-gentle">
-                  <FaHandHoldingHeart className="text-white text-xl animate-pulse-gentle" />
-                </div>
-                <h2 className="text-3xl font-bold text-[#7a181c] group-hover/header:text-[#c59c45] transition-colors duration-500">
-                  Pet Wellness, Heart First
-                </h2>
-              </div>
-              <p className="text-lg text-gray-700 mb-6 leading-relaxed animate-fade-in-up">
-                At DCC Pets, we aren't just about check-ups and treatments —
-                we're about lifelong companionship. Our mission is to offer
-                heartfelt care and modern veterinary solutions that elevate the
-                lives of pets and the people who love them.
-              </p>
-              <p className="text-lg text-gray-700 leading-relaxed animate-fade-in-up-delayed">
-                From simple consults to complex surgeries, our skilled team
-                blends expertise with empathy at every step.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Vision & Values */}
-        <div className="grid lg:grid-cols-2 gap-10 mb-20">
-          <div className="bg-white p-10 rounded-2xl shadow-xl border-l-8 border-[#7a181c] hover:-translate-y-2 transition-all duration-300 animate-slide-in-left group hover:shadow-2xl">
-            <div className="flex items-center mb-6">
-              <div className="w-14 h-14 bg-gradient-to-br from-[#7a181c] to-[#a52c2e] rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 animate-bounce-gentle">
-                <FaEye className="text-white text-xl animate-blink" />
-              </div>
-              <h3 className="text-2xl font-bold text-[#7a181c] group-hover:text-[#c59c45] transition-colors duration-500">
-                Our Vision
-              </h3>
-            </div>
-            <p className="text-gray-700 text-base leading-relaxed group-hover:text-gray-800 transition-colors duration-300">
-              We aim to be recognized as the most trusted name in pet healthcare
-              — pioneering wellness, innovation-driven treatments, and heartfelt
-              community service.
-            </p>
-          </div>
-          <div className="bg-white p-10 rounded-2xl shadow-xl border-l-8 border-[#c59c45] hover:-translate-y-2 transition-all duration-300 animate-slide-in-right group hover:shadow-2xl">
-            <div className="flex items-center mb-6">
-              <div className="w-14 h-14 bg-gradient-to-br from-[#c59c45] to-[#e9cd6c] rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 animate-bounce-gentle">
-                <FaHeart className="text-white text-xl animate-heartbeat" />
-              </div>
-              <h3 className="text-2xl font-bold text-[#7a181c] group-hover:text-[#c59c45] transition-colors duration-500">
-                Our Values
-              </h3>
-            </div>
-            <ul className="space-y-3 text-gray-700 text-base group-hover:text-gray-800 transition-colors duration-300">
-              <li className="animate-slide-in-item hover:translate-x-2 transition-transform duration-300">
-                • Ethical care with compassion
-              </li>
-              <li
-                className="animate-slide-in-item hover:translate-x-2 transition-transform duration-300"
-                style={{ animationDelay: "0.1s" }}
-              >
-                • Constant pursuit of medical excellence
-              </li>
-              <li
-                className="animate-slide-in-item hover:translate-x-2 transition-transform duration-300"
-                style={{ animationDelay: "0.2s" }}
-              >
-                • Clear, kind communication
-              </li>
-              <li
-                className="animate-slide-in-item hover:translate-x-2 transition-transform duration-300"
-                style={{ animationDelay: "0.3s" }}
-              >
-                • Learning that never stops
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        {/* Guiding Principles */}
-        <div className="bg-gradient-to-r from-[#7a181c] via-[#a52b2f] to-[#c59c45] text-white p-12 rounded-3xl shadow-xl relative mb-20 overflow-hidden animate-fade-in-up group">
-          <div className="absolute inset-0 bg-black/10"></div>
-          {/* Enhanced floating background elements */}
-          <div className="absolute top-0 right-0 w-32 h-32 bg-white opacity-5 rounded-full animate-float-gentle transform translate-x-16 -translate-y-16"></div>
-          <div className="absolute bottom-0 left-0 w-24 h-24 bg-white opacity-8 rounded-full animate-float-reverse transform -translate-x-12 translate-y-12"></div>
-          <div className="absolute top-1/2 left-1/2 w-40 h-40 bg-white opacity-3 rounded-full animate-pulse-ultra-slow transform -translate-x-1/2 -translate-y-1/2"></div>
-
-          <div className="relative z-10">
-            <h3 className="text-3xl font-bold text-center mb-14 animate-slide-down">
-              What Guides Our Every Step
-            </h3>
-            <div className="grid md:grid-cols-3 gap-10">
-              <div
-                className="text-center animate-fade-in-up group/principle"
-                style={{ animationDelay: "0.2s" }}
-              >
-                <div className="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center mx-auto mb-5 backdrop-blur-sm group-hover/principle:bg-white/30 group-hover/principle:scale-110 group-hover/principle:rotate-6 transition-all duration-500 animate-bounce-gentle">
-                  <FaStethoscope className="text-2xl animate-swing" />
-                </div>
-                <h4 className="text-xl font-semibold mb-3 group-hover/principle:text-[#f1d07a] transition-colors duration-300">
-                  Top-Tier Treatment
-                </h4>
-                <p className="opacity-90 text-sm leading-relaxed group-hover/principle:opacity-100 transition-opacity duration-300">
-                  Every animal is cared for with medical precision and love,
-                  using the latest tools in veterinary science.
-                </p>
-              </div>
-              <div
-                className="text-center animate-fade-in-up group/principle"
-                style={{ animationDelay: "0.4s" }}
-              >
-                <div className="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center mx-auto mb-5 backdrop-blur-sm group-hover/principle:bg-white/30 group-hover/principle:scale-110 group-hover/principle:rotate-6 transition-all duration-500 animate-bounce-gentle">
-                  <FaHeart className="text-2xl animate-heartbeat" />
-                </div>
-                <h4 className="text-xl font-semibold mb-3 group-hover/principle:text-[#f1d07a] transition-colors duration-300">
-                  Wholehearted Healing
-                </h4>
-                <p className="opacity-90 text-sm leading-relaxed group-hover/principle:opacity-100 transition-opacity duration-300">
-                  We see the soul behind the fur — and we honor that bond with
-                  genuine compassion.
-                </p>
-              </div>
-              <div
-                className="text-center animate-fade-in-up group/principle"
-                style={{ animationDelay: "0.6s" }}
-              >
-                <div className="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center mx-auto mb-5 backdrop-blur-sm group-hover/principle:bg-white/30 group-hover/principle:scale-110 group-hover/principle:rotate-6 transition-all duration-500 animate-bounce-gentle">
-                  <FaShieldAlt className="text-2xl animate-shield-glow" />
-                </div>
-                <h4 className="text-xl font-semibold mb-3 group-hover/principle:text-[#f1d07a] transition-colors duration-300">
-                  Unshakable Trust
-                </h4>
-                <p className="opacity-90 text-sm leading-relaxed group-hover/principle:opacity-100 transition-opacity duration-300">
-                  Your trust means everything — we earn it through honesty,
-                  transparency, and unwavering care.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Final CTA */}
-        <div className="bg-white rounded-3xl p-12 text-center border-t-8 border-[#c59c45] shadow-lg animate-fade-in-up hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 group">
-          <h3 className="text-3xl font-bold text-[#7a181c] mb-6 group-hover:text-[#c59c45] transition-colors duration-500 animate-slide-up">
-            Care That's Worth Barking About
-          </h3>
-          <p className="text-lg text-gray-700 mb-10 max-w-2xl mx-auto group-hover:text-gray-800 transition-colors duration-300 animate-fade-in-delayed">
-            Thousands of pet parents trust us for one reason: we treat your pet
-            like family — because they are.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center animate-slide-up-delayed">
-            <button className="bg-[#7a181c] text-white px-8 py-4 rounded-xl font-medium hover:bg-[#a32b30] transition-all duration-500 transform hover:scale-105 hover:-translate-y-1 shadow-lg hover:shadow-xl animate-bounce-in group/btn">
-              <span className="group-hover/btn:animate-pulse">
-                Schedule Visit
-              </span>
-            </button>
-            <button
-              className="border-2 border-[#c59c45] text-[#c59c45] px-8 py-4 rounded-xl font-medium hover:bg-[#c59c45] hover:text-white transition-all duration-500 transform hover:scale-105 hover:-translate-y-1 shadow-lg hover:shadow-xl animate-bounce-in group/btn"
-              style={{ animationDelay: "0.2s" }}
-            >
-              <span className="group-hover/btn:animate-pulse">
-                Know Us Better
-              </span>
             </button>
           </div>
         </div>
@@ -796,7 +612,7 @@ const Mission = () => {
           animation: slide-up 0.8s ease-out;
         }
         .animate-slide-up-delayed {
-          animation: slide-up-delayed 0.8s ease-out 0.3s both;
+          animation: slide-up-delayed 0.8s ease-in-out 0.3s both;
         }
         .animate-pulse-ultra-slow {
           animation: pulse-ultra-slow 8s ease-in-out infinite;
