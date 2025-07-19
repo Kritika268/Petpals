@@ -1,5 +1,3 @@
-// /sanity/schemaTypes/heroSlide.js
-
 export default {
   name: 'heroSlide',
   title: 'Hero Slide',

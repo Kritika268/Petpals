@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { client } from '../lib/sanity';
-import { testimonialQuery } from '../lib/queries'; // import the GROQ query
+import { testimonialQuery } from '../lib/queries'; 
 
 const Testimonial = () => {
   const [testimonials, setTestimonials] = useState([]);

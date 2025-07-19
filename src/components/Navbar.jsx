@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+
 import {
   FaBars,
   FaAngleDown,
@@ -15,7 +15,7 @@ function Navbar() {
   const [isServicesOpenMobile, setIsServicesOpenMobile] = useState(false);
 
   return (
-    <nav className="bg-[#f7f3ea] border-b border-[#b98a32]/30 top-0 left-0 w-full z-50">
+    <nav className="bg-[#f7f3ea] border-b border-[#b98a32]/30 top-0 left-0 w-full z-50 pt-4">
       {/* Top contact bar desktop */}
       <div className="hidden md:flex container mx-auto px-6 justify-end items-center py-2 text-sm text-[#821b1f]">
         <div className="flex items-center gap-8">
@@ -124,7 +124,7 @@ function Navbar() {
             {isServicesOpenMobile && (
               <div className="absolute right-0 top-full mt-2 w-48 shadow-lg rounded-lg py-1 z-50 border border-[#b98a32]/20 bg-[#f7f3ea]">
                 <Link 
-                  to="/services/offerings" 
+                  to="/service" 
                   onClick={() => setIsOpen(false)}
                   className="block px-4 py-2 hover:bg-[#821b1f] hover:text-[#f7f3ea] rounded-t-lg transition-colors"
                 >
@@ -255,7 +255,7 @@ function Navbar() {
               <ul className="bg-[#f7f3ea] w-56 shadow-lg rounded-lg border border-[#b98a32]/20 z-50">
                 <li>
                   <Link 
-                    to="/services/offering" 
+                    to="/service" 
                     className="block px-4 py-2 hover:bg-[#821b1f] hover:text-[#f7f3ea] rounded-t-lg transition-colors"
                   >
                     Offerings

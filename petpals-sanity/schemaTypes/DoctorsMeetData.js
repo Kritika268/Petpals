@@ -1,4 +1,3 @@
-// schemas/doctorsMeet.js
 export default {
   name: 'doctorsMeet',
   title: 'Doctors Meet Section',

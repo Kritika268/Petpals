@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { client, urlFor } from '../lib/sanity';
+import { client} from '../lib/sanity';
 
 const DoctorsMeet = () => {
   const [data, setData] = useState(null); // title, paragraph, images

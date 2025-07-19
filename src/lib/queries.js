@@ -9,3 +9,14 @@ export const testimonialQuery = `*[_type == "testimonial"] | order(_createdAt as
   avatarUrl,
   "avatar": coalesce(avatarImage.asset->url, avatarUrl)
 }`;
+
+export const getLocationsQuery = `
+  *[_type == "locationGroup"] | order(_createdAt asc){
+    title,
+    items[]{
+      text,
+      map,
+      isTime
+    }
+  }
+`;
