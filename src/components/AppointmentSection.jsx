@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import {Link} from "react-router-dom";
 import { client, urlFor } from "../lib/sanity";
 
 const Service = () => {
@@ -35,9 +36,11 @@ const Service = () => {
           <p className="text-base sm:text-lg md:text-xl lg:text-2xl opacity-90">
             {data.description}
           </p>
-          <button className="bg-[#821b1f] hover:bg-white text-center text-white hover:text-[#b98a32] font-semibold py-3 px-8 rounded-3xl w-fit text-lg transition duration-300 transform hover:scale-105 mb-10">
-            {data.buttonText}
-          </button>
+          <Link to="/appointment">
+            <button className="bg-[#821b1f] hover:bg-white text-center text-white hover:text-[#b98a32] font-semibold py-3 px-8 rounded-3xl w-fit text-lg transition duration-300 transform hover:scale-105 mb-10">
+              {data.buttonText}
+            </button>
+          </Link>
         </div>
 
         {/* Right */}

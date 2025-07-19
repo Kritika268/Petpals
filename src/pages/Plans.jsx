@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Check, Sparkles, Crown, Shield } from 'lucide-react';
+import HelpButtonModal from '../components/HelpButtonModal';
 
 const Plans = () => {
   const [selectedPlan, setSelectedPlan] = useState('6month');
@@ -124,6 +125,7 @@ const Plans = () => {
 
   return (
     <>  
+      <HelpButtonModal />
       {/* Hero Content Section */}
       <div className="w-screen relative left-1/2 right-1/2 -mx-[50vw] overflow-hidden pb-12 px-4">
         {/* Content Section - Always flex-row */}
