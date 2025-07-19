@@ -11,7 +11,7 @@ import image from "../../assets/image.png";
 
 const Mission = () => {
   return (
-    <div className="bg-[#faf5ef] min-h-screen w-screen relative left-1/2 right-1/2 -mx-[50vw] overflow-hidden">
+    <div className="bg-[#b98a32] min-h-screen w-screen relative left-1/2 right-1/2 -mx-[50vw] overflow-hidden pb-10">
       {/* Floating Background Elements */}
       <div className="fixed inset-0 pointer-events-none z-0">
         <div className="absolute top-20 left-10 w-3 h-3 bg-[#c59c45] rounded-full animate-float-1 opacity-30"></div>
@@ -22,7 +22,7 @@ const Mission = () => {
       </div>
 
       {/* Hero Section */}
-      <div className="relative bg-gradient-to-tr from-[#7a181c] via-[#a32b30] to-[#c59c45] text-white overflow-hidden animate-fade-in">
+      <div className="relative bg-gradient-to-tr from-[#7a181c] via-[#a32b30] to-[#c59c45] text-white overflow-hidden animate-fade-in mb-15 px-5">
         <div className="absolute inset-0 bg-black/10"></div>
         <div className="absolute inset-0">
           <div className="absolute top-28 left-10 w-28 h-28 bg-white opacity-10 rounded-full animate-pulse-slow"></div>
@@ -30,7 +30,7 @@ const Mission = () => {
           <div className="absolute top-[40%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-white opacity-5 rounded-full animate-spin-ultra-slow"></div>
         </div>
         <div className="relative px-6 py-24 max-w-6xl mx-auto text-center">
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-white/20 rounded-full backdrop-blur-sm mb-6 animate-scale-in-bounce">
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-white/20 rounded-full backdrop-blur-sm animate-scale-in-bounce">
             <FaLeaf className="text-3xl text-white animate-pulse-gentle" />
           </div>
           <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-6 animate-slide-up-hero">
@@ -45,7 +45,7 @@ const Mission = () => {
       </div>
 
       {/* Main Content */}
-      <div className="container mx-auto px-4 py-20">
+      <div className="px-5 py-20">
         {/* Core Belief */}
         <div className="rounded-3xl shadow-xl p-10 md:p-14 bg-white border-l-[10px] border-[#b98a32] mb-20">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
