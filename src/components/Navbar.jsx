@@ -15,7 +15,7 @@ function Navbar() {
   const [isServicesOpenMobile, setIsServicesOpenMobile] = useState(false);
 
   return (
-    <nav className="bg-[#f7f3ea] border-b border-[#b98a32]/30 top-0 left-0 w-full z-50">
+    <nav className="bg-[#f7f3ea] border-b border-[#b98a32]/30 top-0 left-0 w-full z-50 pt-4">
       {/* Top contact bar desktop */}
       <div className="hidden md:flex container mx-auto px-6 justify-end items-center py-2 text-sm text-[#821b1f]">
         <div className="flex items-center gap-8">
