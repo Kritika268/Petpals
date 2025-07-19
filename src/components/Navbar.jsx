@@ -124,7 +124,7 @@ function Navbar() {
             {isServicesOpenMobile && (
               <div className="absolute right-0 top-full mt-2 w-48 shadow-lg rounded-lg py-1 z-50 border border-[#b98a32]/20 bg-[#f7f3ea]">
                 <Link 
-                  to="/services/offerings" 
+                  to="/service" 
                   onClick={() => setIsOpen(false)}
                   className="block px-4 py-2 hover:bg-[#821b1f] hover:text-[#f7f3ea] rounded-t-lg transition-colors"
                 >
@@ -255,7 +255,7 @@ function Navbar() {
               <ul className="bg-[#f7f3ea] w-56 shadow-lg rounded-lg border border-[#b98a32]/20 z-50">
                 <li>
                   <Link 
-                    to="/services/offering" 
+                    to="/service" 
                     className="block px-4 py-2 hover:bg-[#821b1f] hover:text-[#f7f3ea] rounded-t-lg transition-colors"
                   >
                     Offerings

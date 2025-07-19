@@ -9,6 +9,7 @@ import Plans from "./pages/Plans"
 import Error from './pages/Error';
 import Register from './pages/Register';
 import Appointment from "./pages/Appointment";
+import Service from "./pages/Service";
 // About pages
 import Mission from "./pages/About/Mission";
 import Team from "./pages/About/Team";
@@ -21,7 +22,7 @@ import Recommendations from "./pages/Services/Recommendations";
 
 function AppContent() {
   const location = useLocation();
-  const hideNavFooter = location.pathname === '/register' || !['/', '/telehealth', '/referral', '/plans', '/about/team', '/about/mission', '/about/blog', '/about/contact', '/services/offerings', '/services/packages', '/services/recommendations', '/appointment'].includes(location.pathname);
+  const hideNavFooter = location.pathname === '/register' || !['/', '/telehealth', '/referral', '/plans', '/about/team', '/about/mission', '/about/blog', '/about/contact', '/services/offerings', '/services/packages', '/services/recommendations', '/appointment', '/service'].includes(location.pathname);
 
   return (
     <>
@@ -35,6 +36,7 @@ function AppContent() {
           <Route path="/register" element={<Register />} />
           <Route path="/register" element={<Register />} />
           <Route path="/appointment" element={<Appointment />} />
+          <Route path="/service" element={<Service />} />
           {/* About Routes */}
           <Route path="/about/team" element={<Team />} />
           <Route path="/about/mission" element={<Mission />} />
