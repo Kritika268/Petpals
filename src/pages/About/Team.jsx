@@ -11,6 +11,10 @@ import {
   FaStar,
   FaQuoteLeft,
 } from "react-icons/fa";
+import sarahImage from "../../assets/Dr. Sarah Johnson.jpg";
+import michaelImage from "../../assets/Dr. Michael Chen.jpg";
+import emilyImage from "../../assets/Dr. Emily Rodriguez.jpg";
+import lisaImage from "../../assets/Lisa Thompson.jpg";
 
 const Team = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -28,7 +32,7 @@ const Team = () => {
       role: "Chief Veterinarian",
       specialization: "Small Animal Medicine",
       experience: "15+ years",
-      image: "/placeholder.svg?height=400&width=400&text=Dr.+Sarah+Johnson",
+      image: sarahImage,
       quote: "Every pet deserves a lifetime of love and exceptional care.",
       rating: 4.9,
       social: {
@@ -43,7 +47,7 @@ const Team = () => {
       role: "Senior Veterinarian",
       specialization: "Exotic Animal Care",
       experience: "12+ years",
-      image: "/placeholder.svg?height=400&width=400&text=Dr.+Michael+Chen",
+      image: michaelImage,
       quote: "Healing hearts, one paw at a time.",
       rating: 4.8,
       social: {
@@ -58,7 +62,7 @@ const Team = () => {
       role: "Veterinary Surgeon",
       specialization: "Orthopedic Surgery",
       experience: "10+ years",
-      image: "/placeholder.svg?height=400&width=400&text=Dr.+Emily+Rodriguez",
+      image: emilyImage,
       quote: "Compassion is the best medicine we can offer.",
       rating: 4.9,
       social: {
@@ -73,7 +77,7 @@ const Team = () => {
       role: "Head Veterinary Technician",
       specialization: "Critical Care",
       experience: "8+ years",
-      image: "/placeholder.svg?height=400&width=400&text=Lisa+Thompson",
+      image: lisaImage,
       quote: "Creating a welcoming home for pets and their families.",
       rating: 4.7,
       social: {
@@ -208,7 +212,6 @@ const Team = () => {
                 onMouseEnter={() => setHoveredCard(member.id)}
                 onMouseLeave={() => setHoveredCard(null)}
               >
-               
                 <div className="absolute -top-2 -right-2 w-10 h-10 bg-[#b98a32] rounded-full animate-ping-smooth opacity-30"></div>
                 <div className="absolute -bottom-2 -left-2 w-8 h-8 bg-[#821b1f] rounded-full animate-pulse-smooth opacity-40"></div>
                 <div className="absolute top-4 left-4 w-6 h-6 bg-[#b98a32] rounded-full animate-bounce-smooth opacity-25"></div>
@@ -300,7 +303,6 @@ const Team = () => {
                   </div>
                 </div>
 
-                
                 <div
                   className={`absolute inset-0 bg-gradient-to-t from-[#821b1f]/8 to-transparent transition-opacity duration-700 ease-out pointer-events-none ${
                     hoveredCard === member.id ? "opacity-100" : "opacity-0"
@@ -319,7 +321,6 @@ const Team = () => {
             }`}
           >
             <div className="bg-gradient-to-r from-[#821b1f] via-[#9d2429] to-[#b98a32] rounded-3xl p-16 lg:p-20 text-white relative overflow-hidden shadow-3xl">
-              
               <div className="absolute inset-0 opacity-8">
                 <div className="absolute top-0 right-0 w-56 h-56 bg-white rounded-full transform translate-x-28 -translate-y-28 animate-float-ultra-gentle"></div>
                 <div className="absolute bottom-0 left-0 w-48 h-48 bg-white rounded-full transform -translate-x-24 translate-y-24 animate-float-reverse-smooth"></div>
@@ -362,7 +363,6 @@ const Team = () => {
         </div>
       </div>
 
-     
       <style jsx>{`
         @keyframes float-smooth {
           0%,
