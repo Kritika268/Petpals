@@ -66,7 +66,7 @@ function Navbar() {
   return (
     <nav
       ref={navRef}
-      className={`bg-[#f7f3ea] border-b border-[#b98a32]/30 w-full`}
+      className={`bg-[#f7f3ea] border-b border-[#b98a32]/30 w-full relative`}
     >
       {/* Top contact bar desktop */}
       <div className="hidden lg:flex container mx-auto px-4 xl:px-6 justify-end items-center py-2 text-sm text-[#821b1f]">
@@ -128,8 +128,12 @@ function Navbar() {
 
       {/* Mobile Menu Overlay */}
       {isOpen && (
-        <div className="lg:hidden fixed inset-0 top-[calc(100%)] bg-black/20 backdrop-blur-sm z-40">
-          <div className="bg-[#f7f3ea] border-t border-[#b98a32]/30 shadow-xl">
+        <>
+          {/* Backdrop */}
+          <div className="lg:hidden fixed inset-0 bg-black/30 z-40" onClick={() => setIsOpen(false)} />
+
+          {/* Mobile Menu */}
+          <div className="lg:hidden fixed top-[80px] left-0 right-0 z-50 bg-[#f7f3ea] border-t border-[#b98a32]/30 shadow-2xl min-h-[200px]">
             <div className="flex flex-col gap-1 px-4 py-4 max-h-[calc(100vh-120px)] overflow-y-auto">
               <Link
                 to="/"
@@ -273,7 +277,7 @@ function Navbar() {
               </div>
             </div>
           </div>
-        </div>
+        </>
       )}
 
       {/* Desktop Navbar */}
