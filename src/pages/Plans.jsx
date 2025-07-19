@@ -127,7 +127,7 @@ const Plans = () => {
       {/* Hero Content Section */}
       <div className="w-screen relative left-1/2 right-1/2 -mx-[50vw] overflow-hidden pb-12 px-4">
         {/* Content Section - Always flex-row */}
-        <div className="relative z-10 max-w-7xl mx-auto px-2 sm:px-4 lg:px-8 h-full flex flex-col lg:flex-row items-center justify-between pt-20">
+        <div className="relative z-10 max-w-7xl mx-auto px-2 sm:px-4 lg:px-8 h-full flex flex-row items-center justify-between pt-20">
           {/* Left Section */}
           <div className="w-full lg:w-1/2 flex flex-col space-y-6 text-[#b98a32] mb-10 lg:mb-0">
             <motion.h1 

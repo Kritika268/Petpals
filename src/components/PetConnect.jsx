@@ -197,8 +197,8 @@ const PetConnect = () => {
 
   return (
     <div className="w-screen relative left-1/2 right-1/2 -mx-[50vw]" style={{ backgroundColor: '#821b1f' }}>
-      <div className="w-full px-4 py-12">
-        <h1 className="text-3xl font-bold text-center mb-12 text-white">DCC PetConnect</h1>
+      <div className="w-full p-4">
+        <h1 className="md:text-5xl text-3xl font-bold text-center mb-3 mt-5 text-white">DCC PetConnect</h1>
         
         {isMobile ? (
           <div className="flex flex-col items-center gap-8 w-full">
