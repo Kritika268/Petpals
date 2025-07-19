@@ -20,3 +20,19 @@ export const getLocationsQuery = `
     }
   }
 `;
+
+export const teamQuery = `*[_type == "teamMember"] | order(_createdAt asc) {
+  _id,
+  name,
+  role,
+  specialization,
+  experience,
+  quote,
+  rating,
+  "image": image.asset->url,
+  social {
+    github,
+    linkedin,
+    instagram
+  }
+}`;
