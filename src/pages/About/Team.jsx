@@ -256,7 +256,7 @@ const Team = () => {
 
                 <div
                   className={`absolute inset-0 bg-gradient-to-t from-[#821b1f]/8 to-transparent transition-opacity duration-700 ease-out pointer-events-none ${
-                    hoveredCard === member.id ? "opacity-100" : "opacity-0"
+                    hoveredCard === member._id ? "opacity-100" : "opacity-0"
                   }`}
                 ></div>
               </div>
