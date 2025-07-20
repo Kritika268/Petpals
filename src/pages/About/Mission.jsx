@@ -8,6 +8,7 @@ import {
   FaHandHoldingHeart,
 } from "react-icons/fa";
 import image from "../../assets/image.png";
+import { Link } from "react-router-dom";
 
 const Mission = () => {
   return (
@@ -169,12 +170,16 @@ const Mission = () => {
             like family — because they are.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <button className="bg-[#7a181c] text-white px-8 py-4 rounded-xl font-medium hover:bg-[#a32b30] transition">
-              Schedule Visit
-            </button>
-            <button className="border-2 border-[#c59c45] text-[#c59c45] px-8 py-4 rounded-xl font-medium hover:bg-[#c59c45] hover:text-white transition">
-              Know Us Better
-            </button>
+            <Link to="/appointment">
+              <button className="bg-[#7a181c] text-white px-8 py-4 rounded-xl font-medium hover:bg-[#a32b30] transition">
+                Schedule Visit
+              </button>
+            </Link>
+            <Link to="/about/team">
+              <button className="border-2 border-[#c59c45] text-[#c59c45] px-8 py-4 rounded-xl font-medium hover:bg-[#c59c45] hover:text-white transition">
+                Know Us Better
+              </button>
+            </Link>
           </div>
         </div>
       </div>
