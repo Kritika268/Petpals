@@ -11,83 +11,33 @@ import {
   FaStar,
   FaQuoteLeft,
 } from "react-icons/fa";
-import sarahImage from "../../assets/Dr. Sarah Johnson.jpg";
-import michaelImage from "../../assets/Dr. Michael Chen.jpg";
-import emilyImage from "../../assets/Dr. Emily Rodriguez.jpg";
-import lisaImage from "../../assets/Lisa Thompson.jpg";
 import { Link } from "react-router-dom";
+import { client } from "../../lib/sanity"; 
+import { teamQuery } from "../../lib/queries"; 
+
 
 const Team = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [teamMembers, setTeamMembers] = useState([]);
   const [hoveredCard, setHoveredCard] = useState(null);
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsVisible(true), 100);
-    return () => clearTimeout(timer);
+    setTimeout(() => setIsVisible(true), 100);
+
+    client.fetch(teamQuery).then((data) => {
+      // Ensure each member has a social object with default values
+      const membersWithSocial = data.map(member => ({
+        ...member,
+        social: member.social || {
+          github: '#',
+          linkedin: '#',
+          instagram: '#'
+        }
+      }));
+      setTeamMembers(membersWithSocial);
+    });
   }, []);
 
-  const teamMembers = [
-    {
-      id: 1,
-      name: "Dr. Sarah Johnson",
-      role: "Chief Veterinarian",
-      specialization: "Small Animal Medicine",
-      experience: "15+ years",
-      image: sarahImage,
-      quote: "Every pet deserves a lifetime of love and exceptional care.",
-      rating: 4.9,
-      social: {
-        github: "#",
-        linkedin: "#",
-        instagram: "#",
-      },
-    },
-    {
-      id: 2,
-      name: "Dr. Michael Chen",
-      role: "Senior Veterinarian",
-      specialization: "Exotic Animal Care",
-      experience: "12+ years",
-      image: michaelImage,
-      quote: "Healing hearts, one paw at a time.",
-      rating: 4.8,
-      social: {
-        github: "#",
-        linkedin: "#",
-        instagram: "#",
-      },
-    },
-    {
-      id: 3,
-      name: "Dr. Emily Rodriguez",
-      role: "Veterinary Surgeon",
-      specialization: "Orthopedic Surgery",
-      experience: "10+ years",
-      image: emilyImage,
-      quote: "Compassion is the best medicine we can offer.",
-      rating: 4.9,
-      social: {
-        github: "#",
-        linkedin: "#",
-        instagram: "#",
-      },
-    },
-    {
-      id: 4,
-      name: "Lisa Thompson",
-      role: "Head Veterinary Technician",
-      specialization: "Critical Care",
-      experience: "8+ years",
-      image: lisaImage,
-      quote: "Creating a welcoming home for pets and their families.",
-      rating: 4.7,
-      social: {
-        github: "#",
-        linkedin: "#",
-        instagram: "#",
-      },
-    },
-  ];
 
   return (
     <div className="full-width-breakout bg-[#b98a32] pb-2">
@@ -201,7 +151,7 @@ const Team = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
             {teamMembers.map((member, index) => (
               <div
-                key={member.id}
+                key={member._id}
                 className={`group bg-white rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-700 ease-out transform hover:-translate-y-6 hover:scale-105 border-t-8 border-[#b98a32] overflow-hidden relative ${
                   isVisible
                     ? "animate-fade-up-smooth opacity-100"
@@ -210,7 +160,7 @@ const Team = () => {
                 style={{
                   animationDelay: `${1000 + index * 150}ms`,
                 }}
-                onMouseEnter={() => setHoveredCard(member.id)}
+                onMouseEnter={() => setHoveredCard(member._id)}
                 onMouseLeave={() => setHoveredCard(null)}
               >
                 <div className="absolute -top-2 -right-2 w-10 h-10 bg-[#b98a32] rounded-full animate-ping-smooth opacity-30"></div>
@@ -306,7 +256,7 @@ const Team = () => {
 
                 <div
                   className={`absolute inset-0 bg-gradient-to-t from-[#821b1f]/8 to-transparent transition-opacity duration-700 ease-out pointer-events-none ${
-                    hoveredCard === member.id ? "opacity-100" : "opacity-0"
+                    hoveredCard === member._id ? "opacity-100" : "opacity-0"
                   }`}
                 ></div>
               </div>
@@ -354,7 +304,7 @@ const Team = () => {
                     </button>
                   </Link>
 
-                  <Link to="/contact">
+                  <Link to="/about/contact">
                     <button className="border-4 border-white text-white px-12 py-6 rounded-2xl text-2xl font-bold hover:bg-white hover:text-[#821b1f] transition-all duration-700 ease-out transform hover:scale-110 hover:-translate-y-3 shadow-3xl hover:shadow-4xl group/btn">
                       <span className="group-hover/btn:animate-pulse-smooth">
                         Contact Us
@@ -368,7 +318,7 @@ const Team = () => {
         </div>
       </div>
 
-      <style jsx>{`
+      <style jsx="true" global="true">{`
         @keyframes float-smooth {
           0%,
           100% {
