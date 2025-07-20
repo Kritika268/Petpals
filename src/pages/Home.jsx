@@ -59,27 +59,29 @@ function Home() {
 
       <div className="relative">
         {loading ? (
-          <div className="bg-gray-50 flex items-center justify-center p-4 h-96">
+          <div className="bg-gray-50 flex items-center justify-center p-4 h-64 sm:h-80 lg:h-96">
             <div className="text-center">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900 mx-auto"></div>
-              <p className="mt-4 text-lg">Loading content...</p>
+              <div className="animate-spin rounded-full h-8 w-8 sm:h-12 sm:w-12 border-b-2 border-gray-900 mx-auto"></div>
+              <p className="mt-4 text-sm sm:text-lg">Loading content...</p>
             </div>
           </div>
         ) : heroSlides.length > 0 ? (
-          <div className="bg-gray-50 flex items-center justify-center p-4">
+          <div className="bg-gray-50 flex items-center justify-center p-2 sm:p-4">
             <Carousel slides={heroSlides} />
           </div>
         ) : (
-          <div className="bg-gray-50 flex items-center justify-center p-4 h-96">
-            <p className="text-lg">No slides available</p>
+          <div className="bg-gray-50 flex items-center justify-center p-4 h-64 sm:h-80 lg:h-96">
+            <p className="text-sm sm:text-lg">No slides available</p>
           </div>
         )}
 
-        <div className="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 w-full">
+        {/* BookAppointment - Responsive positioning */}
+        <div className="relative -mt-8 sm:-mt-12 lg:absolute lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:-translate-y-1/2 z-10 w-full px-4 lg:px-0">
           <BookAppointment />
         </div>
 
-        <div className="relative"> 
+        {/* MembershipSection with proper spacing */}
+        <div className="relative mt-8 lg:mt-0">
           <MembershipSection />
         </div>
       </div>
