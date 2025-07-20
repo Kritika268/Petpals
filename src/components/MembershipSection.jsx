@@ -4,6 +4,7 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import { client } from "../lib/sanity";
 
+
 const MembershipSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [hoveredIndex, setHoveredIndex] = useState(null);
@@ -50,47 +51,60 @@ const MembershipSection = () => {
 
   
   return (
-    <div className="w-screen relative left-1/2 right-1/2 -mx-[50vw] bg-[#f7f3ea]" style={{ paddingTop: "200px", paddingBottom: "100px" }}>
+    <div className="w-screen relative left-1/2 right-1/2 -mx-[50vw] bg-[#f7f3ea]" style={{ paddingTop: "120px", paddingBottom: "80px" }}>
 
       {/* Header Section */}
-      <div className="flex flex-row items-center justify-center gap-4 py-4 px-2 flex-wrap max-w-7xl mx-auto">
-        <div className="p-4 justify-center w-full flex sm:w-auto">
+      <div className="flex flex-col lg:flex-row items-center justify-center gap-4 lg:gap-8 py-4 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        {/* Left Logo - Hidden on mobile, visible on large screens */}
+        <div className="hidden lg:flex p-4 justify-center">
           <img
             src="/logo.png"
-            alt="Example"
-            className="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 lg:w-40 lg:h-40 object-cover"
+            alt="Petpals Logo"
+            className="w-32 h-32 xl:w-40 xl:h-40 object-cover"
           />
         </div>
 
-        <div className="flex flex-col items-center text-center px-4 flex-1">
-          <h1 className="text-[#821b1f] font-extrabold text-2xl md:text-4xl">
+        {/* Center Content */}
+        <div className="flex flex-col items-center text-center px-2 sm:px-4 flex-1 max-w-3xl">
+          {/* Mobile Logo - Only visible on mobile */}
+          <div className="lg:hidden mb-6">
+            <img
+              src="/logo.png"
+              alt="Petpals Logo"
+              className="w-24 h-24 sm:w-28 sm:h-28 object-cover mx-auto"
+            />
+          </div>
+
+          <h1 className="text-[#821b1f] font-extrabold text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-tight mb-4">
             Limitless Consultations, Limitless Health
           </h1>
-          <h2 className="text-[#5e3a1f] font-medium text-lg sm:text-2xl mb-10">
+          <h2 className="text-[#5e3a1f] font-medium text-base sm:text-lg md:text-xl lg:text-2xl mb-6 lg:mb-10 max-w-2xl">
             Love for pets is a simple concept, so are our membership plans.
           </h2>
         </div>
 
-        <div className="p-4 justify-center w-auto hidden lg:flex">
+        {/* Right Logo - Hidden on mobile, visible on large screens */}
+        <div className="hidden lg:flex p-4 justify-center">
           <img
             src="/logo.png"
-            alt="Example"
-            className="w-40 h-40 object-cover"
+            alt="Petpals Logo"
+            className="w-32 h-32 xl:w-40 xl:h-40 object-cover"
           />
         </div>
       </div>
 
       {/* Cards Section */}
-      <div className="max-w-7xl mx-auto px-4 py-10">
-        {/* Mobile Carousel */}
-        <div className="md:hidden flex flex-col items-center relative">
-          <div className="relative w-full flex justify-center items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-10">
+        {/* Mobile and Tablet Carousel */}
+        <div className="lg:hidden flex flex-col items-center relative">
+          <div className="relative w-full flex justify-center items-center px-12 sm:px-16">
             {/* Left Arrow */}
             <button
               onClick={prev}
-              className="absolute left-0 p-2 bg-[#821b1f] text-[#f7f3ea] rounded-full"
+              className="absolute left-0 p-2 sm:p-3 bg-[#821b1f] text-[#f7f3ea] rounded-full hover:bg-[#5e3a1f] transition-colors duration-300 shadow-lg z-10"
+              aria-label="Previous membership plan"
             >
-              <FaArrowLeft />
+              <FaArrowLeft className="text-sm sm:text-base" />
             </button>
 
             {/* Animated Card */}
@@ -102,7 +116,7 @@ const MembershipSection = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -50 }}
                 transition={{ duration: 0.5 }}
-                className="w-full flex justify-center"
+                className="w-full flex justify-center max-w-sm mx-auto"
               >
                 <MembershipCard
                   time={memberships[currentIndex].time}
@@ -113,25 +127,39 @@ const MembershipSection = () => {
               </motion.div>
             )}
 
-
             {/* Right Arrow */}
             <button
               onClick={next}
-              className="absolute right-0 p-2 bg-[#821b1f] text-[#f7f3ea] rounded-full"
+              className="absolute right-0 p-2 sm:p-3 bg-[#821b1f] text-[#f7f3ea] rounded-full hover:bg-[#5e3a1f] transition-colors duration-300 shadow-lg z-10"
+              aria-label="Next membership plan"
             >
-              <FaArrowRight />
+              <FaArrowRight className="text-sm sm:text-base" />
             </button>
+          </div>
+
+          {/* Carousel Indicators */}
+          <div className="flex justify-center mt-6 space-x-2">
+            {memberships.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentIndex(index)}
+                className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-colors duration-300 ${
+                  index === currentIndex ? 'bg-[#821b1f]' : 'bg-[#b98a32]'
+                }`}
+                aria-label={`Go to membership plan ${index + 1}`}
+              />
+            ))}
           </div>
         </div>
 
-        {/* Overlapping cards for medium and up screens */}
-        <div className="hidden md:flex items-center justify-center mt-10 overflow-hidden">
+        {/* Overlapping cards for large screens */}
+        <div className="hidden lg:flex items-center justify-center mt-8 lg:mt-10 overflow-visible px-4">
           <motion.div
-            className="flex"
+            className="flex items-center justify-center"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false, amount: 0.4 }}
+            viewport={{ once: false, amount: 0.3 }}
           >
             {memberships.map((m, i) => {
               const isDimmed = hoveredIndex !== null && hoveredIndex !== i;
@@ -140,9 +168,11 @@ const MembershipSection = () => {
                 <motion.div
                   key={i}
                   variants={cardVariants}
-                  className={`z-${10 + i} ${i !== 0 ? "-ml-6" : ""}`}
+                  className={`relative ${i !== 0 ? "-ml-4 lg:-ml-6 xl:-ml-8" : ""}`}
+                  style={{ zIndex: hoveredIndex === i ? 30 : 10 + i }}
                   whileHover={{
-                    zIndex: 20,
+                    scale: 1.05,
+                    zIndex: 30,
                     transition: { duration: 0.3 },
                   }}
                   onMouseEnter={() => setHoveredIndex(i)}
