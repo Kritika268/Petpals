@@ -129,7 +129,7 @@ const Testimonial = () => {
 
         <div 
           ref={containerRef}
-          className="relative h-[400px] overflow-hidden"
+          className="relative h-[250px] overflow-hidden"
         >
           {extendedTestimonials.map((testimonial, index) => (
             <TestimonialCard 
