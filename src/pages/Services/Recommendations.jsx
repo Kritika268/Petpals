@@ -19,11 +19,11 @@ import {
   FaChevronLeft,
   FaChevronRight,
 } from "react-icons/fa"
+import Testimonial from "../../components/Testimonial";
 
 const Recommendations = () => {
   const [isVisible, setIsVisible] = useState({})
   const [currentStory, setCurrentStory] = useState(0)
-  const [currentTestimonial, setCurrentTestimonial] = useState(0)
   const observerRef = useRef()
   const elementsRef = useRef([])
 
@@ -139,50 +139,6 @@ const Recommendations = () => {
     },
   ]
 
-  // Testimonials data
-  const testimonials = [
-    {
-      id: 1,
-      name: "Priya S.",
-      petName: "Rocky",
-      avatar: "👩",
-      rating: 5,
-      text: "Petpals' recommendations are always spot-on. Our dog, Rocky, is healthier and happier than ever! The personalized nutrition plan made all the difference.",
-    },
-    {
-      id: 2,
-      name: "Rahul M.",
-      petName: "Simba",
-      avatar: "👨",
-      rating: 5,
-      text: "The advice on senior pet care helped our old cat, Simba, stay active and comfortable. The team truly understands what older pets need.",
-    },
-    {
-      id: 3,
-      name: "Anjali & Family",
-      petName: "Coco",
-      avatar: "👩‍👧‍👦",
-      rating: 5,
-      text: "We love the seasonal care tips—no more winter worries for our puppy, Coco! Every recommendation is practical and easy to follow.",
-    },
-    {
-      id: 4,
-      name: "Sandeep K.",
-      petName: "Bruno",
-      avatar: "👨‍💼",
-      rating: 5,
-      text: "The team at Petpals truly cares. Their personalized advice made all the difference for our rescue dog, Bruno. He's like a new dog now!",
-    },
-    {
-      id: 5,
-      name: "Meera D.",
-      petName: "Bella",
-      avatar: "👩‍🦳",
-      rating: 5,
-      text: "From nutrition to grooming, every tip has been practical and easy to follow. Bella has never looked or felt better. Highly recommend!",
-    },
-  ]
-
   useEffect(() => {
     observerRef.current = new IntersectionObserver(
       (entries) => {
@@ -218,15 +174,6 @@ const Recommendations = () => {
     return () => clearInterval(interval)
   }, [successStories.length])
 
-  // Auto-rotate testimonials
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length)
-    }, 5000)
-
-    return () => clearInterval(interval)
-  }, [testimonials.length])
-
   const addToRefs = (el, index) => {
     if (el && !elementsRef.current.includes(el)) {
       elementsRef.current[index] = el
@@ -241,17 +188,9 @@ const Recommendations = () => {
     setCurrentStory((prev) => (prev - 1 + successStories.length) % successStories.length)
   }
 
-  const nextTestimonial = () => {
-    setCurrentTestimonial((prev) => (prev + 1) % testimonials.length)
-  }
-
-  const prevTestimonial = () => {
-    setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length)
-  }
-
   return (
     <>
-      <style jsx>{`
+      <style jsx="true" global="true">{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Lato:wght@300;400;700&display=swap');
         
         /* Custom Keyframe Animations */
@@ -783,86 +722,7 @@ const Recommendations = () => {
         </section>
 
         {/* Testimonials Section */}
-        <section className="py-16 px-4">
-          <div className="max-w-4xl mx-auto">
-            <div
-              ref={(el) => addToRefs(el, 30)}
-              data-animate="testimonials-title"
-              className={`text-center mb-12 transition-all duration-1000 ${
-                isVisible["testimonials-title"] ? "animate-fade-in" : "opacity-0 translate-y-8"
-              }`}
-            >
-              <h2 className="text-responsive-lg font-bold mb-4" style={{ color: "#821b1f" }}>
-                What Our Clients Say
-              </h2>
-              <p className="text-lg" style={{ color: "#8b7355" }}>
-                Real experiences from pet parents who trust us with their furry family members.
-              </p>
-            </div>
-
-            <div
-              ref={(el) => addToRefs(el, 31)}
-              data-animate="testimonials-carousel"
-              className={`relative transition-all duration-1000 ${
-                isVisible["testimonials-carousel"] ? "animate-slide-up" : "opacity-0 translate-y-8"
-              }`}
-            >
-              <div className="bg-white rounded-3xl p-8 shadow-lg hover-lift carousel-item">
-                <div className="text-center">
-                  <div className="text-4xl mb-4">{testimonials[currentTestimonial].avatar}</div>
-                  <div className="flex justify-center mb-4">
-                    {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
-                      <FaStar key={i} className="text-yellow-400 text-xl" />
-                    ))}
-                  </div>
-                  <blockquote className="text-lg leading-relaxed mb-6 italic" style={{ color: "#8b7355" }}>
-                    "{testimonials[currentTestimonial].text}"
-                  </blockquote>
-                  <div>
-                    <p className="font-bold text-lg" style={{ color: "#821b1f" }}>
-                      {testimonials[currentTestimonial].name}
-                    </p>
-                    <p className="text-gray-600">Pet parent to {testimonials[currentTestimonial].petName}</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Navigation Controls */}
-              <div className="flex justify-between items-center mt-6">
-                <button
-                  onClick={prevTestimonial}
-                  className="p-3 rounded-full bg-white shadow-lg hover-scale transition-all duration-300"
-                  style={{ color: "#821b1f" }}
-                >
-                  <FaChevronLeft />
-                </button>
-
-                <div className="flex gap-2">
-                  {testimonials.map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setCurrentTestimonial(index)}
-                      className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                        index === currentTestimonial ? "scale-125" : "hover:scale-110"
-                      }`}
-                      style={{
-                        backgroundColor: index === currentTestimonial ? "#b98a32" : "#d1d5db",
-                      }}
-                    />
-                  ))}
-                </div>
-
-                <button
-                  onClick={nextTestimonial}
-                  className="p-3 rounded-full bg-white shadow-lg hover-scale transition-all duration-300"
-                  style={{ color: "#821b1f" }}
-                >
-                  <FaChevronRight />
-                </button>
-              </div>
-            </div>
-          </div>
-        </section>
+        <Testimonial />
 
         {/* CTA Footer Section */}
         <section

@@ -112,7 +112,7 @@ const Packages = () => {
 
   return (
     <>
-      <style jsx>{`
+      <style jsx="true" global="true">{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Lato:wght@300;400;700&display=swap');
         
         /* Custom Keyframe Animations */
@@ -656,29 +656,29 @@ const Packages = () => {
             <div className="space-y-3 md:space-y-4">
               {faqs.map((faq, index) => (
                 <div
-                  key={faq.id}
+                  key={faq._id}
                   ref={(el) => addToRefs(el, index + 40)}
-                  data-animate={`faq-${faq.id}`}
+                  data-animate={`faq-${faq._id}`}
                   className={`bg-white rounded-xl md:rounded-2xl shadow-lg overflow-hidden transition-all duration-1000 ${
-                    isVisible[`faq-${faq.id}`]
+                    isVisible[`faq-${faq._id}`]
                       ? `animate-slide-up stagger-${(index % 3) + 1}`
                       : "opacity-0 translate-y-8"
                   }`}
                 >
                   <button
-                    onClick={() => toggleFaq(faq.id)}
+                    onClick={() => toggleFaq(faq._id)}
                     className="w-full p-4 md:p-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-200"
                   >
                     <span className="font-semibold text-base md:text-lg text-[#821b1f]">
                       {faq.question}
                     </span>
-                    {openFaq === faq.id ? (
+                    {openFaq === faq._id ? (
                       <FaChevronUp style={{ color: "#b98a32" }} />
                     ) : (
                       <FaChevronDown style={{ color: "#b98a32" }} />
                     )}
                   </button>
-                  <div className={`accordion-content ${openFaq === faq.id ? "open" : ""}`}>
+                  <div className={`accordion-content ${openFaq === faq._id ? "open" : ""}`}>
                     <div className="px-4 md:px-6 pb-4 md:pb-6">
                       <p className="text-gray-700 leading-relaxed text-sm md:text-base">{faq.answer}</p>
                     </div>
