@@ -8,6 +8,7 @@ const PetConnect = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState('');
+  const [currentTime, setCurrentTime] = useState('');
   const containerRef = useRef(null);
   
   const { scrollYProgress } = useScroll({
@@ -20,6 +21,23 @@ const PetConnect = () => {
     checkIfMobile();
     window.addEventListener('resize', checkIfMobile);
     return () => window.removeEventListener('resize', checkIfMobile);
+  }, []);
+
+  // Update current time every minute
+  useEffect(() => {
+    const updateTime = () => {
+      const now = new Date();
+      const hours = now.getHours();
+      const minutes = now.getMinutes();
+      const ampm = hours >= 12 ? 'PM' : 'AM';
+      const displayHours = hours % 12 || 12;
+      const displayMinutes = minutes.toString().padStart(2, '0');
+      setCurrentTime(`${displayHours}:${displayMinutes}`);
+    };
+
+    updateTime(); // Set initial time
+    const interval = setInterval(updateTime, 60000); // Update every minute
+    return () => clearInterval(interval);
   }, []);
 
   const validatePhoneNumber = (number) => {
@@ -54,56 +72,56 @@ const PetConnect = () => {
   };
 
   const appDownloadContent = (
-    <div className="md:space-y-6 w-full p-4">
-      <h2 className="text-2xl font-bold" style={{ color: '#821b1f' }}>Get the PetConnect App</h2>
-      <p className="text-gray-700">Download our app to manage your pet's health on the go. Available on both Android and iOS platforms.</p>
-      
-      <div className="flex flex-col md:space-y-4">
-        <div className="bg-[#f7f3ea] p-4 rounded-lg">
-          <h3 className="font-medium mb-2" style={{ color: '#821b1f' }}>Get the link via WhatsApp</h3>
-          <form onSubmit={handleSubmit} className="flex flex-col space-y-3">
-            <input 
-              type="tel" 
-              placeholder="Enter Phone Number with country code" 
-              className="border rounded p-2 text-sm w-full"
+    <div className="md:space-y-4 w-full p-3">
+      <h2 className="text-lg font-bold" style={{ color: '#821b1f' }}>Get the PetConnect App</h2>
+      <p className="text-gray-700 text-sm">Download our app to manage your pet's health on the go. Available on both Android and iOS platforms.</p>
+
+      <div className="flex flex-col md:space-y-3 space-y-2">
+        <div className="bg-[#f7f3ea] p-3 rounded-lg">
+          <h3 className="font-medium mb-2 text-sm" style={{ color: '#821b1f' }}>Get the link via WhatsApp</h3>
+          <form onSubmit={handleSubmit} className="flex flex-col space-y-2">
+            <input
+              type="tel"
+              placeholder="Enter Phone Number with country code"
+              className="border rounded p-1.5 text-xs w-full"
               value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
               required
             />
-            {error && <p className="text-red-500 text-sm">{error}</p>}
-            <button 
+            {error && <p className="text-red-500 text-xs">{error}</p>}
+            <button
               type="submit"
-              className="rounded p-2 text-sm font-medium transition-colors w-full"
+              className="rounded p-1.5 text-xs font-medium transition-colors w-full"
               style={{ backgroundColor: '#821b1f', color: '#f7f3ea' }}
             >
               {isSubmitted ? "Link Sent!" : "Send App Link"}
             </button>
           </form>
         </div>
-        
-        <div className="bg-[#f7f3ea] md:p-4 p-2 rounded-lg">
-          <h3 className="font-medium mb-2" style={{ color: '#821b1f' }}>Or download directly</h3>
-          <div className="flex flex-col space-y-3">
-            <a 
-              href="https://play.google.com/store/apps/details?id=in.dcc.pets" 
-              target="_blank" 
+
+        <div className="bg-[#f7f3ea] p-3 rounded-lg">
+          <h3 className="font-medium mb-2 text-sm" style={{ color: '#821b1f' }}>Or download directly</h3>
+          <div className="flex flex-col space-y-2">
+            <a
+              href="https://play.google.com/store/apps/details?id=in.dcc.pets"
+              target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center rounded p-2 text-sm transition-colors"
+              className="flex items-center justify-center rounded p-1.5 text-xs transition-colors"
               style={{ backgroundColor: '#821b1f', color: '#f7f3ea' }}
             >
-              <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+              <svg className="w-3 h-3 mr-1.5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/>
               </svg>
               Download on Google Play
             </a>
-            <a 
-              href="https://apps.apple.com/in/app/dcc-petconnect/id1557541454" 
-              target="_blank" 
+            <a
+              href="https://apps.apple.com/in/app/dcc-petconnect/id1557541454"
+              target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center rounded p-2 text-sm transition-colors"
+              className="flex items-center justify-center rounded p-1.5 text-xs transition-colors"
               style={{ backgroundColor: '#821b1f', color: '#f7f3ea' }}
             >
-              <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+              <svg className="w-3 h-3 mr-1.5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
               </svg>
               Download on the App Store
@@ -363,7 +381,7 @@ const PetConnect = () => {
                     {/* Status Bar - positioned around notch */}
                     <div className="absolute top-0 left-0 right-0 h-8 bg-black flex items-center justify-between px-3 text-white text-xs z-20">
                       <div className="flex items-center space-x-1">
-                        <span>9:41</span>
+                        <span>{currentTime}</span>
                       </div>
                       <div className="flex items-center space-x-1">
                         <div className="flex space-x-1">
@@ -453,7 +471,7 @@ const PetConnect = () => {
                       {/* Status Bar - positioned around notch */}
                       <div className="absolute top-0 left-0 right-0 h-8 bg-black flex items-center justify-between px-3 text-white text-xs z-20">
                         <div className="flex items-center space-x-1">
-                          <span>9:41</span>
+                          <span>{currentTime}</span>
                         </div>
                         <div className="flex items-center space-x-1">
                           <div className="flex space-x-1">
