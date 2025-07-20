@@ -1,18 +1,29 @@
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 import { Link } from "react-router-dom";
 
-const MembershipCard = ({ time, price, hoverColor, dimmed, benefits }) => {
+const MembershipCard = ({ time, price, hoverColor, benefits, isHovered, cardIndex, hoveredIndex }) => {
+  // All cards use the same color scheme (your primary colors)
+  const shadowClass = isHovered ? 'shadow-2xl' : 'shadow-xl';
+
+  // Handle dimming when other cards are hovered - but keep cards solid (no transparency)
+  const isDimmed = hoveredIndex !== null && hoveredIndex !== cardIndex;
+
   return (
     <div
-      className={`w-full max-w-xs mx-auto bg-[#821b1f] rounded-2xl sm:rounded-3xl shadow-xl overflow-hidden my-2 sm:my-4 transition-all duration-300 ${hoverColor || ''}`}
-      style={dimmed ? { backgroundColor: "#5e3a1f", opacity: 0.8 } : {}}
+      className={`w-full bg-[#821b1f] rounded-2xl sm:rounded-3xl ${shadowClass} overflow-hidden transition-all duration-300 ${hoverColor || ''}`}
+      style={isDimmed ? {
+        backgroundColor: "#5e3a1f",
+        filter: 'brightness(0.8)' // Only darken, no opacity to keep solid
+      } : {
+        backgroundColor: "#821b1f" // Ensure solid background
+      }}
     >
       <div className="px-4 sm:px-6 py-4 sm:py-6">
         <div className="font-bold text-lg sm:text-xl mb-2 sm:mb-3 text-[#f7f3ea] leading-tight">
           {time}<br /> Membership
         </div>
         <p className="text-[#f7f3ea] text-2xl sm:text-3xl font-semibold mb-3 sm:mb-4 border-b pb-2 border-[#b98a32]">
-          {price}
+          ₹{price}
         </p>
 
         <p className="text-[#f7f3ea] text-xs sm:text-sm mb-2 sm:mb-3 opacity-80 leading-relaxed">

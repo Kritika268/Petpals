@@ -155,25 +155,52 @@ const MembershipSection = () => {
         {/* Overlapping cards for large screens */}
         <div className="hidden lg:flex items-center justify-center mt-8 lg:mt-10 overflow-visible px-4">
           <motion.div
-            className="flex items-center justify-center"
+            className="relative mx-auto"
+            style={{
+              width: '1200px',
+              height: '500px', // Fixed height to contain the cards
+              position: 'relative'
+            }}
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: false, amount: 0.3 }}
           >
             {memberships.map((m, i) => {
-              const isDimmed = hoveredIndex !== null && hoveredIndex !== i;
+              const isHovered = hoveredIndex === i;
+
+              // Z-index logic for proper overlapping
+              let zIndex;
+              if (isHovered) {
+                zIndex = 1000; // Hovered card always on top
+              } else if (hoveredIndex !== null) {
+                // When something is hovered, maintain proper stacking order
+                zIndex = 100 - i; // Reverse order so rightmost cards are higher
+              } else {
+                // Default state: middle card (index 1) on top, then right (index 2), then left (index 0)
+                if (i === 1) zIndex = 300; // Middle card highest
+                else if (i === 2) zIndex = 200; // Right card middle
+                else zIndex = 100; // Left card lowest
+              }
 
               return (
                 <motion.div
                   key={i}
                   variants={cardVariants}
-                  className={`relative ${i !== 0 ? "-ml-4 lg:-ml-6 xl:-ml-8" : ""}`}
-                  style={{ zIndex: hoveredIndex === i ? 30 : 10 + i }}
-                  whileHover={{
-                    scale: 1.05,
-                    zIndex: 30,
-                    transition: { duration: 0.3 },
+                  className={`absolute ${i === 0 ? 'left-32' : i === 1 ? 'left-1/2 -translate-x-1/2' : 'right-32'}`}
+                  style={{
+                    zIndex: zIndex,
+                    position: 'absolute',
+                    width: '320px', // Fixed width for consistent overlap
+                  }}
+                  animate={{
+                    scale: isHovered ? 1.05 : 1,
+                    y: isHovered ? -8 : 0,
+                    zIndex: zIndex,
+                  }}
+                  transition={{
+                    duration: 0.3,
+                    ease: "easeInOut"
                   }}
                   onMouseEnter={() => setHoveredIndex(i)}
                   onMouseLeave={() => setHoveredIndex(null)}
@@ -182,8 +209,10 @@ const MembershipSection = () => {
                     time={m.time}
                     price={m.price}
                     hoverColor={m.hoverColor}
-                    dimmed={isDimmed}
                     benefits={m.benefits}
+                    isHovered={isHovered}
+                    cardIndex={i}
+                    hoveredIndex={hoveredIndex}
                   />
                 </motion.div>
               );
