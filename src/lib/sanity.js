@@ -18,3 +18,4 @@ export const urlFor = (source) => {
     .auto('format')
     .fit('clip');
 };
+

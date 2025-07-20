@@ -7,6 +7,7 @@ import DoctorsMeetData from './DoctorsMeetData'
 import testimonialData from './testimonialData'
 import locationGroup from './locationGroup'
 import teamMemberData from './teamMemberData'
+import faq from './faq'
 
 export const schemaTypes = [
   heroSlide,
@@ -17,5 +18,6 @@ export const schemaTypes = [
   DoctorsMeetData,
   testimonialData,
   locationGroup,
-  teamMemberData
+  teamMemberData,
+  faq
 ]

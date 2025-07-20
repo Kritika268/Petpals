@@ -66,7 +66,7 @@ function Navbar() {
   return (
     <nav
       ref={navRef}
-      className={`bg-[#f7f3ea] border-b border-[#b98a32]/30 w-full relative`}
+      className={`bg-[#f7f3ea] border-b border-[#b98a32]/30 w-full relative pt-5`}
     >
       {/* Top contact bar desktop */}
       <div className="hidden lg:flex container mx-auto px-4 xl:px-6 justify-end items-center py-2 text-sm text-[#821b1f]">
