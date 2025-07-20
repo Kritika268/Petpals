@@ -126,25 +126,86 @@ const PetConnect = () => {
       description: "Manage all your pet's appointments in one place. View upcoming and past visits with ease.",
       cta: "Book your next appointment now",
       phoneContent: (
-        <div className="p-4 bg-[#f7f3ea] rounded-lg h-full overflow-auto">
-          <div className="flex border-b mb-2">
-            <button className="px-4 py-2 font-medium border-b-2" style={{ borderColor: '#b98a32', color: '#821b1f' }}>Upcoming</button>
-            <button className="px-4 py-2 text-gray-500">Past</button>
+        <div className="h-full bg-white">
+          {/* App Header */}
+          <div className="px-2 py-1.5 border-b border-gray-200">
+            <h3 className="text-sm font-bold" style={{ color: '#821b1f' }}>Appointments</h3>
           </div>
-          <div className="space-y-3">
-            <div className="border rounded p-3 bg-white">
-              <div className="flex justify-between">
-                <span className="font-medium">DCC Animal Hospital</span>
-                <span className="text-sm text-gray-500">15 Sep 2021, 12:45 PM</span>
+
+          {/* Tab Navigation */}
+          <div className="flex border-b border-gray-200 bg-gray-50">
+            <button className="flex-1 px-2 py-1.5 font-medium border-b-2 text-xs" style={{ borderColor: '#b98a32', color: '#821b1f' }}>
+              Upcoming
+            </button>
+            <button className="flex-1 px-2 py-1.5 text-gray-500 text-xs">
+              Past
+            </button>
+          </div>
+
+          {/* Content Area */}
+          <div className="p-2 space-y-2">
+            {/* Appointment Card */}
+            <div className="bg-gray-50 rounded-md border border-gray-100 p-2">
+              <div className="flex items-start justify-between mb-1">
+                <div className="flex-1 pr-2">
+                  <h4 className="font-semibold text-gray-900 text-xs leading-tight">DCC Animal Hospital</h4>
+                  <p className="text-xs text-gray-600 mt-0.5">Vaccination - Dr. Kumar</p>
+                </div>
+                <div className="text-right flex-shrink-0">
+                  <div className="text-xs text-gray-500">Sep 15</div>
+                  <div className="text-xs text-gray-500">12:45 PM</div>
+                </div>
               </div>
-              <p className="text-sm mt-1">Vaccination - Dr. Hemaret Kumar</p>
-              <Link 
-                to="/appointments" 
-                className="inline-block mt-2 text-sm px-3 py-1 rounded"
-                style={{ backgroundColor: '#b98a32', color: '#f7f3ea' }}
-              >
-                Schedule
-              </Link>
+
+              <div className="flex items-center justify-between pt-1.5 border-t border-gray-200 mt-1.5">
+                <div className="flex items-center space-x-1">
+                  <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: '#b98a32' }}></div>
+                  <span className="text-xs text-gray-600">Confirmed</span>
+                </div>
+                <div className="flex space-x-1">
+                  <Link
+                    to="/appointments"
+                    className="px-1.5 py-0.5 rounded text-xs font-medium bg-gray-200 text-gray-700"
+                  >
+                    Reschedule
+                  </Link>
+                  <Link
+                    to="/appointments"
+                    className="px-1.5 py-0.5 rounded text-xs font-medium"
+                    style={{ backgroundColor: '#b98a32', color: '#f7f3ea' }}
+                  >
+                    View
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            {/* Next Appointment */}
+            <div className="bg-gray-50 rounded-md border border-gray-100 p-2">
+              <div className="flex items-start justify-between mb-1">
+                <div className="flex-1 pr-2">
+                  <h4 className="font-semibold text-gray-900 text-xs leading-tight">DCC Animal Hospital</h4>
+                  <p className="text-xs text-gray-600 mt-0.5">Checkup - Dr. Wilson</p>
+                </div>
+                <div className="text-right flex-shrink-0">
+                  <div className="text-xs text-gray-500">Oct 22</div>
+                  <div className="text-xs text-gray-500">10:30 AM</div>
+                </div>
+              </div>
+
+              <div className="flex items-center justify-between pt-1.5 border-t border-gray-200 mt-1.5">
+                <div className="flex items-center space-x-1">
+                  <div className="w-1.5 h-1.5 rounded-full bg-green-500"></div>
+                  <span className="text-xs text-gray-600">Upcoming</span>
+                </div>
+                <Link
+                  to="/appointments"
+                  className="px-1.5 py-0.5 rounded text-xs font-medium"
+                  style={{ backgroundColor: '#821b1f', color: '#f7f3ea' }}
+                >
+                  Book
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -155,22 +216,63 @@ const PetConnect = () => {
       description: "Never miss an important vaccination with our automated reminders and tracking system.",
       cta: "Set up vaccination schedule",
       phoneContent: (
-        <div className="p-4 bg-[#f7f3ea] rounded-lg h-full">
-          <h3 className="text-lg font-bold mb-4" style={{ color: '#821b1f' }}>Vaccination Schedule</h3>
-          <div className="space-y-4">
-            <div className="p-3 rounded" style={{ backgroundColor: '#f0e6d2' }}>
-              <div className="flex justify-between items-center">
-                <span className="font-medium">Rabies</span>
-                <span className="text-xs px-2 py-1 rounded-full" style={{ backgroundColor: '#821b1f', color: '#f7f3ea' }}>Due</span>
+        <div className="h-full bg-white">
+          {/* App Header */}
+          <div className="px-2 py-1.5 border-b border-gray-200">
+            <h3 className="text-sm font-bold" style={{ color: '#821b1f' }}>Vaccination Schedule</h3>
+          </div>
+
+          {/* Content Area */}
+          <div className="p-2 space-y-2">
+            {/* Vaccination Card */}
+            <div className="bg-gray-50 rounded-md border border-gray-100 p-2">
+              <div className="flex justify-between items-start mb-1">
+                <div className="flex-1 pr-2">
+                  <h4 className="font-semibold text-gray-900 text-xs leading-tight">Rabies Vaccination</h4>
+                  <p className="text-xs text-gray-600 mt-0.5">Due on 15 Oct 2023</p>
+                </div>
+                <span className="text-xs px-2 py-0.5 rounded-full font-medium flex-shrink-0" style={{ backgroundColor: '#821b1f', color: '#f7f3ea' }}>
+                  Due
+                </span>
               </div>
-              <p className="text-sm mt-1">Due on 15 Oct 2023</p>
-              <Link 
-                to="/vaccinations" 
-                className="inline-block mt-2 text-sm px-3 py-1 rounded"
-                style={{ backgroundColor: '#b98a32', color: '#f7f3ea' }}
-              >
-                Schedule
-              </Link>
+
+              <div className="flex items-center justify-between pt-1.5 border-t border-gray-200 mt-1.5">
+                <div className="text-xs text-gray-500">
+                  Last: 15 Oct 2022
+                </div>
+                <Link
+                  to="/vaccinations"
+                  className="px-2 py-0.5 rounded text-xs font-medium transition-colors"
+                  style={{ backgroundColor: '#b98a32', color: '#f7f3ea' }}
+                >
+                  Schedule
+                </Link>
+              </div>
+            </div>
+
+            {/* Additional Vaccination */}
+            <div className="bg-gray-50 rounded-md border border-gray-100 p-2">
+              <div className="flex justify-between items-start mb-1">
+                <div className="flex-1 pr-2">
+                  <h4 className="font-semibold text-gray-900 text-xs leading-tight">DHPP Vaccine</h4>
+                  <p className="text-xs text-gray-600 mt-0.5">Due on 20 Nov 2023</p>
+                </div>
+                <span className="text-xs px-2 py-0.5 rounded-full font-medium bg-green-100 text-green-800 flex-shrink-0">
+                  Upcoming
+                </span>
+              </div>
+
+              <div className="flex items-center justify-between pt-1.5 border-t border-gray-200 mt-1.5">
+                <div className="text-xs text-gray-500">
+                  Last: 20 Nov 2022
+                </div>
+                <Link
+                  to="/vaccinations"
+                  className="px-2 py-0.5 rounded text-xs font-medium bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors"
+                >
+                  View
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -242,22 +344,58 @@ const PetConnect = () => {
               </div>
             </div>
             
-            <div className="relative w-full max-w-xs mx-auto h-[500px]">
-              <div className="absolute inset-0 rounded-3xl p-2 shadow-xl" style={{ backgroundColor: '#b98a32' }}>
-                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-1/3 h-6 rounded-b-xl" style={{ backgroundColor: '#b98a32' }}></div>
-                <div className="h-full overflow-hidden rounded-2xl bg-[#f7f3ea]">
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={activeIndex}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.5 }}
-                      className="h-full"
-                    >
-                      {content[activeIndex].phoneContent}
-                    </motion.div>
-                  </AnimatePresence>
+            <div className="relative w-full max-w-xs mx-auto h-[580px]">
+              {/* Phone Frame - Black like real mobile */}
+              <div className="absolute inset-0 rounded-[2.5rem] p-3 shadow-2xl bg-black">
+                {/* Screen Bezel */}
+                <div className="relative h-full rounded-[2rem] bg-gray-900 p-1">
+                  {/* Notch/Dynamic Island */}
+                  <div className="absolute top-2 left-1/2 transform -translate-x-1/2 w-20 h-6 bg-black rounded-full z-20"></div>
+
+                  {/* Speaker */}
+                  <div className="absolute top-4 left-1/2 transform -translate-x-1/2 w-12 h-1 bg-gray-700 rounded-full z-20"></div>
+
+                  {/* Front Camera */}
+                  <div className="absolute top-3 left-1/2 transform translate-x-2 w-2 h-2 bg-gray-800 rounded-full z-20"></div>
+
+                  {/* Screen */}
+                  <div className="h-full overflow-hidden rounded-[1.8rem] bg-black relative z-10">
+                    {/* Status Bar - positioned around notch */}
+                    <div className="absolute top-0 left-0 right-0 h-8 bg-black flex items-center justify-between px-3 text-white text-xs z-20">
+                      <div className="flex items-center space-x-1">
+                        <span>9:41</span>
+                      </div>
+                      <div className="flex items-center space-x-1">
+                        <div className="flex space-x-1">
+                          <div className="w-1 h-1 bg-white rounded-full"></div>
+                          <div className="w-1 h-1 bg-white rounded-full"></div>
+                          <div className="w-1 h-1 bg-white rounded-full"></div>
+                        </div>
+                        <div className="w-5 h-2 border border-white rounded-sm">
+                          <div className="w-3 h-1 bg-white rounded-sm m-0.5"></div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* App Content Area */}
+                    <div className="absolute top-8 left-0 right-0 bottom-0 bg-white rounded-b-[1.8rem] overflow-hidden">
+                      <AnimatePresence mode="wait">
+                        <motion.div
+                          key={activeIndex}
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          transition={{ duration: 0.5 }}
+                          className="h-full overflow-y-auto"
+                        >
+                          {content[activeIndex].phoneContent}
+                        </motion.div>
+                      </AnimatePresence>
+                    </div>
+                  </div>
+
+                  {/* Home Indicator */}
+                  <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gray-600 rounded-full"></div>
                 </div>
               </div>
             </div>
@@ -296,22 +434,58 @@ const PetConnect = () => {
             </div>
             
             <div className="md:w-1/2 flex justify-center items-center sticky top-0 h-screen">
-              <div className="relative w-72 h-[500px]">
-                <div className="absolute inset-0 rounded-3xl p-2 shadow-xl" style={{ backgroundColor: '#b89a32' }}>
-                  <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-1/3 h-6 rounded-b-xl" style={{ backgroundColor: '#b98a32' }}></div>
-                  <div className="h-full overflow-hidden rounded-2xl bg-[#f7f3ea]">
-                    <AnimatePresence mode="wait">
-                      <motion.div
-                        key={activeIndex}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.5 }}
-                        className="h-full"
-                      >
-                        {content[activeIndex].phoneContent}
-                      </motion.div>
-                    </AnimatePresence>
+              <div className="relative w-72 h-[580px]">
+                {/* Phone Frame - Black like real mobile */}
+                <div className="absolute inset-0 rounded-[2.5rem] p-3 shadow-2xl bg-black">
+                  {/* Screen Bezel */}
+                  <div className="relative h-full rounded-[2rem] bg-gray-900 p-1">
+                    {/* Notch/Dynamic Island */}
+                    <div className="absolute top-2 left-1/2 transform -translate-x-1/2 w-20 h-6 bg-black rounded-full z-20"></div>
+
+                    {/* Speaker */}
+                    <div className="absolute top-4 left-1/2 transform -translate-x-1/2 w-12 h-1 bg-gray-700 rounded-full z-20"></div>
+
+                    {/* Front Camera */}
+                    <div className="absolute top-3 left-1/2 transform translate-x-2 w-2 h-2 bg-gray-800 rounded-full z-20"></div>
+
+                    {/* Screen */}
+                    <div className="h-full w-full rounded-[1.8rem] overflow-hidden  bg-black relative -mt-[2px] z-10">
+                      {/* Status Bar - positioned around notch */}
+                      <div className="absolute top-0 left-0 right-0 h-8 bg-black flex items-center justify-between px-3 text-white text-xs z-20">
+                        <div className="flex items-center space-x-1">
+                          <span>9:41</span>
+                        </div>
+                        <div className="flex items-center space-x-1">
+                          <div className="flex space-x-1">
+                            <div className="w-1 h-1 bg-white rounded-full"></div>
+                            <div className="w-1 h-1 bg-white rounded-full"></div>
+                            <div className="w-1 h-1 bg-white rounded-full"></div>
+                          </div>
+                          <div className="w-5 h-2 border border-white rounded-sm">
+                            <div className="w-3 h-1 bg-white rounded-sm m-0.5"></div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* App Content Area */}
+                      <div className="absolute top-8 left-0 right-0 bottom-0 bg-white rounded-b-[1.8rem] overflow-hidden">
+                        <AnimatePresence mode="wait">
+                          <motion.div
+                            key={activeIndex}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.5 }}
+                            className="h-full overflow-y-auto"
+                          >
+                            {content[activeIndex].phoneContent}
+                          </motion.div>
+                        </AnimatePresence>
+                      </div>
+                    </div>
+
+                    {/* Home Indicator */}
+                    <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gray-600 rounded-full"></div>
                   </div>
                 </div>
               </div>
