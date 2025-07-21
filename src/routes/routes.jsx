@@ -2,7 +2,6 @@ import { Routes, Route } from "react-router-dom";
 
 // Pages
 import Home from "../pages/Home";
-import Telehealth from "../pages/Telehealth";
 import Referral from "../pages/Referral";
 import Plans from "../pages/Plans";
 import Register from "../pages/Register";
@@ -25,23 +24,20 @@ function AppRoutes() {
     <Routes>
       {/* Main Pages */}
       <Route path="/" element={<Home />} />
-      <Route path="/telehealth" element={<Telehealth />} />
+
       <Route path="/referral" element={<Referral />} />
       <Route path="/plans" element={<Plans />} />
       <Route path="/register" element={<Register />} />
       <Route path="/appointment" element={<Appointment />} />
       <Route path="/service" element={<Service />} />
-
       {/* About Pages */}
       <Route path="/about/team" element={<Team />} />
       <Route path="/about/mission" element={<Mission />} />
       <Route path="/about/blog" element={<Blog />} />
       <Route path="/about/contact" element={<Contact />} />
-
       {/* Services Pages */}
       <Route path="/services/packages" element={<Packages />} />
       <Route path="/services/recommendations" element={<Recommendations />} />
-
       {/* Catch-all for 404 */}
       <Route path="*" element={<Error />} />
     </Routes>
