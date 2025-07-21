@@ -30,7 +30,7 @@ const Packages = () => {
     {
       id: 1,
       name: "Essential Wellness",
-      price: "₹999",
+      price: "999",
       period: "3 months",
       description: "Perfect for routine checkups and preventive care.",
       icon: FaStethoscope,
@@ -57,7 +57,7 @@ const Packages = () => {
     {
       id: 2,
       name: "Premium Care",
-      price: "₹2,499",
+      price: "2,499",
       period: "6 months",
       description: "Comprehensive health and pampering for your pet.",
       icon: FaCrown,
@@ -85,7 +85,7 @@ const Packages = () => {
     {
       id: 3,
       name: "Ultimate VIP",
-      price: "₹4,999",
+      price: "4,999",
       period: "1 year",
       description: "All-inclusive care for your furry family member.",
       icon: FaStar,
@@ -610,7 +610,7 @@ const Packages = () => {
                       </h3>
                       <div className="mb-4">
                         <span className="text-4xl font-bold" style={{ color: "#b98a32" }}>
-                          {pkg.price}
+                          ₹{pkg.price}
                         </span>
                         <span className="text-gray-600 ml-2">/ {pkg.period}</span>
                       </div>
@@ -676,7 +676,7 @@ const Packages = () => {
                       <th key={pkg.id} className="p-4 text-center font-bold" style={{ color: "#821b1f" }}>
                         <div className="flex flex-col items-center">
                           <span>{pkg.name}</span>
-                          <span className="text-sm font-normal text-gray-600">{pkg.price}</span>
+                          <span className="text-sm font-normal text-gray-600">₹{pkg.price}</span>
                         </div>
                       </th>
                     ))}
