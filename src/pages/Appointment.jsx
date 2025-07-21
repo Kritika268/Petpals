@@ -1,47 +1,52 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Video, Users, UserCheck, Calendar, Clock, Star } from 'lucide-react';
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Video, Users, UserCheck, Calendar, Clock, Star } from "lucide-react";
 
-import PetConnect from "../components/PetConnect"
-import HelpButtonModal from '../components/HelpButtonModal';
+import PetConnect from "../components/PetConnect";
+import HelpButtonModal from "../components/HelpButtonModal";
 
 const Appointment = () => {
   const [selectedOption, setSelectedOption] = useState(null);
 
   const consultationOptions = [
     {
-      id: 'general',
-      title: 'General Consultation',
-      description: 'Basic health check-ups and routine care for your pet',
+      id: "general",
+      title: "General Consultation",
+      description: "Basic health check-ups and routine care for your pet",
       icon: Video,
-      price: '$45',
-      duration: '30 min',
-      features: ['Health Assessment', 'Vaccination Guidance', 'Nutrition Advice'],
-      gradient: 'from-[#821b1f] to-[#a5252a]',
-      hoverGradient: 'from-[#a5252a] to-[#c02f34]'
+      price: "$45",
+      duration: "30 min",
+      features: [
+        "Health Assessment",
+        "Vaccination Guidance",
+        "Nutrition Advice",
+      ],
+      gradient: "from-[#821b1f] to-[#a5252a]",
+      hoverGradient: "from-[#a5252a] to-[#c02f34]",
     },
     {
-      id: 'senior',
-      title: 'Teleconsultation (Senior Veterinarian)',
-      description: 'Expert consultation with experienced veterinary specialists',
+      id: "senior",
+      title: "Teleconsultation (Senior Veterinarian)",
+      description:
+        "Expert consultation with experienced veterinary specialists",
       icon: UserCheck,
-      price: '$75',
-      duration: '45 min',
-      features: ['Specialized Care', 'Complex Diagnosis', 'Treatment Plans'],
-      gradient: 'from-[#b98a32] to-[#d4a445]',
-      hoverGradient: 'from-[#d4a445] to-[#e8b54c]'
+      price: "$75",
+      duration: "45 min",
+      features: ["Specialized Care", "Complex Diagnosis", "Treatment Plans"],
+      gradient: "from-[#b98a32] to-[#d4a445]",
+      hoverGradient: "from-[#d4a445] to-[#e8b54c]",
     },
     {
-      id: 'head',
-      title: 'Teleconsultation (Head Veterinarian)',
-      description: 'Premium consultation with our head veterinarian',
+      id: "head",
+      title: "Teleconsultation (Head Veterinarian)",
+      description: "Premium consultation with our head veterinarian",
       icon: Users,
-      price: '$95',
-      duration: '60 min',
-      features: ['Premium Care', 'Second Opinion', 'Comprehensive Review'],
-      gradient: 'from-[#821b1f] to-[#b98a32]',
-      hoverGradient: 'from-[#a5252a] to-[#d4a445]'
-    }
+      price: "$95",
+      duration: "60 min",
+      features: ["Premium Care", "Second Opinion", "Comprehensive Review"],
+      gradient: "from-[#821b1f] to-[#b98a32]",
+      hoverGradient: "from-[#a5252a] to-[#d4a445]",
+    },
   ];
 
   const containerVariants = {
@@ -49,34 +54,34 @@ const Appointment = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2
-      }
-    }
+        staggerChildren: 0.2,
+      },
+    },
   };
 
   const cardVariants = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       y: 50,
-      scale: 0.9
+      scale: 0.9,
     },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
       scale: 1,
       transition: {
         duration: 0.6,
-        ease: "easeOut"
-      }
+        ease: "easeOut",
+      },
     },
     hover: {
       scale: 1.05,
       y: -10,
       transition: {
         duration: 0.3,
-        ease: "easeInOut"
-      }
-    }
+        ease: "easeInOut",
+      },
+    },
   };
 
   const iconVariants = {
@@ -85,24 +90,24 @@ const Appointment = () => {
       scale: 1.2,
       transition: {
         duration: 0.8,
-        ease: "easeInOut"
-      }
-    }
+        ease: "easeInOut",
+      },
+    },
   };
 
   return (
     <>
       <HelpButtonModal />
-      
+
       {/* Hero Section */}
-      <motion.div 
-        className="w-screen relative left-1/2 right-1/2 -mx-[50vw] overflow-hidden bg-gradient-to-br from-[#821b1f] to-[#b98a32] py-16"
+      <motion.div
+        className="bg-[#b98a32] min-h-screen w-full overflow-hidden pb-10 bg-gradient-to-br from-[#821b1f] to-[#b98a32] py-16"
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
         <div className="max-w-6xl mx-auto px-4 text-center text-white">
-          <motion.h1 
+          <motion.h1
             className="text-4xl md:text-5xl font-bold mb-4"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -110,14 +115,15 @@ const Appointment = () => {
           >
             DCC Tele Health Booking
           </motion.h1>
-          <motion.p 
+          <motion.p
             className="text-lg md:text-xl max-w-4xl mx-auto leading-relaxed opacity-90"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.6 }}
           >
-            With DCC's telehealth services, you can book appointments with doctors, keep your pet's 
-            schedule in check and get all your pet's healthcare resources in one place.
+            With DCC's telehealth services, you can book appointments with
+            doctors, keep your pet's schedule in check and get all your pet's
+            healthcare resources in one place.
           </motion.p>
         </div>
       </motion.div>
@@ -148,34 +154,34 @@ const Appointment = () => {
             {consultationOptions.map((option) => {
               const IconComponent = option.icon;
               const isSelected = selectedOption === option.id;
-              
+
               return (
                 <motion.div
                   key={option.id}
                   className={`relative bg-white rounded-2xl shadow-lg overflow-hidden cursor-pointer transform-gpu ${
-                    isSelected ? 'ring-4 ring-[#b98a32]' : ''
+                    isSelected ? "ring-4 ring-[#b98a32]" : ""
                   }`}
                   variants={cardVariants}
                   whileHover="hover"
                   onClick={() => setSelectedOption(option.id)}
                 >
                   {/* Gradient Header */}
-                  <motion.div 
+                  <motion.div
                     className={`h-32 bg-gradient-to-r ${option.gradient} flex items-center justify-center relative overflow-hidden`}
                     whileHover={{
-                      background: `linear-gradient(to right, ${option.hoverGradient})`
+                      background: `linear-gradient(to right, ${option.hoverGradient})`,
                     }}
                   >
                     <motion.div
                       className="absolute inset-0 bg-white opacity-10"
                       animate={{
                         scale: [1, 1.2, 1],
-                        opacity: [0.1, 0.2, 0.1]
+                        opacity: [0.1, 0.2, 0.1],
                       }}
                       transition={{
                         duration: 3,
                         repeat: Infinity,
-                        ease: "easeInOut"
+                        ease: "easeInOut",
                       }}
                     />
                     <motion.div variants={iconVariants}>
@@ -240,7 +246,11 @@ const Appointment = () => {
                       className="absolute top-4 right-4 bg-[#b98a32] text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold"
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
-                      transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 500,
+                        damping: 30,
+                      }}
                     >
                       ✓
                     </motion.div>
@@ -262,8 +272,9 @@ const Appointment = () => {
                 Why Choose DCC Telehealth?
               </h3>
               <p className="text-gray-600 text-sm">
-                Our certified veterinarians provide professional care from the comfort of your home. 
-                Get expert advice, prescriptions, and follow-up care for your beloved pets.
+                Our certified veterinarians provide professional care from the
+                comfort of your home. Get expert advice, prescriptions, and
+                follow-up care for your beloved pets.
               </p>
             </div>
           </motion.div>

@@ -10,7 +10,7 @@ import {
   FaTags,
 } from "react-icons/fa";
 import { useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const Blog = () => {
   const [featuredPost, setFeaturedPost] = useState(null);
@@ -21,26 +21,27 @@ const Blog = () => {
   useEffect(() => {
     const fetchNewsArticles = async () => {
       try {
-        const apiKey = process.env.VITE_NEWS_API_KEY || 'e26a83ff8ba7401faa7b6498a2c2d957';
+        const apiKey =
+          process.env.VITE_NEWS_API_KEY || "e26a83ff8ba7401faa7b6498a2c2d957";
         // More specific query for pet care news
         const response = await fetch(
           `https://newsapi.org/v2/everything?q=(pet care OR dog training OR cat health OR veterinary)&language=en&sortBy=publishedAt&pageSize=5&apiKey=${apiKey}`
         );
-        
+
         if (!response.ok) {
-          throw new Error('Failed to fetch news articles');
+          throw new Error("Failed to fetch news articles");
         }
-        
+
         const data = await response.json();
-        
+
         if (data.articles && data.articles.length > 0) {
           // Filter out articles without URLs or titles
           const validArticles = data.articles.filter(
-            article => article.url && article.title
+            (article) => article.url && article.title
           );
-          
+
           if (validArticles.length === 0) {
-            throw new Error('No valid articles found');
+            throw new Error("No valid articles found");
           }
 
           // Format articles with more relevant categories
@@ -48,13 +49,19 @@ const Blog = () => {
             // Determine category based on content
             let category = "Pet Care";
             const title = article.title.toLowerCase();
-            if (title.includes('dog') || title.includes('puppy')) {
+            if (title.includes("dog") || title.includes("puppy")) {
               category = "Dogs";
-            } else if (title.includes('cat') || title.includes('kitten')) {
+            } else if (title.includes("cat") || title.includes("kitten")) {
               category = "Cats";
-            } else if (title.includes('health') || title.includes('veterinary')) {
+            } else if (
+              title.includes("health") ||
+              title.includes("veterinary")
+            ) {
               category = "Health";
-            } else if (title.includes('training') || title.includes('behavior')) {
+            } else if (
+              title.includes("training") ||
+              title.includes("behavior")
+            ) {
               category = "Training";
             }
 
@@ -74,22 +81,32 @@ const Blog = () => {
             return {
               id: index + 1,
               title: article.title,
-              excerpt: article.description || "Click to read more about this pet care topic",
+              excerpt:
+                article.description ||
+                "Click to read more about this pet care topic",
               image: imageUrl,
-              publishedDate: new Date(article.publishedAt).toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-              }),
-              readTime: `${Math.max(3, Math.floor((article.content?.length || 0) / 500))} min read`,
+              publishedDate: new Date(article.publishedAt).toLocaleDateString(
+                "en-US",
+                {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                }
+              ),
+              readTime: `${Math.max(
+                3,
+                Math.floor((article.content?.length || 0) / 500)
+              )} min read`,
               author: article.author || "Pet Care Expert",
               category: category,
-              views: `${Math.floor(Math.random() * 10)}.${Math.floor(Math.random() * 10)}k`,
+              views: `${Math.floor(Math.random() * 10)}.${Math.floor(
+                Math.random() * 10
+              )}k`,
               likes: Math.floor(Math.random() * 200).toString(),
-              url: article.url // Actual news article URL
+              url: article.url, // Actual news article URL
             };
           });
-          
+
           // Set the first article as featured
           setFeaturedPost(formattedArticles[0]);
           // Set the rest as regular posts
@@ -100,74 +117,92 @@ const Blog = () => {
         // Fallback to pet care focused default data with working images
         setFeaturedPost({
           id: 1,
-          title: "Latest Advances in Pet Nutrition: What Every Owner Should Know",
-          excerpt: "New research reveals important updates on pet food ingredients and dietary requirements for optimal health.",
-          image: "https://images.unsplash.com/photo-1586671267731-da2cf3ceeb80?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-          publishedDate: new Date().toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
+          title:
+            "Latest Advances in Pet Nutrition: What Every Owner Should Know",
+          excerpt:
+            "New research reveals important updates on pet food ingredients and dietary requirements for optimal health.",
+          image:
+            "https://images.unsplash.com/photo-1586671267731-da2cf3ceeb80?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+          publishedDate: new Date().toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
           }),
           readTime: "6 min read",
           author: "Dr. Sarah Johnson, DVM",
           category: "Nutrition",
           views: "3.2k",
           likes: "245",
-          url: "https://www.akc.org/expert-advice/nutrition/"
+          url: "https://www.akc.org/expert-advice/nutrition/",
         });
-        
+
         setBlogPosts([
           {
             id: 2,
             title: "Essential Summer Safety Tips for Your Pets",
-            excerpt: "Protect your furry friends from heatstroke and other warm-weather hazards with these veterinarian-approved tips.",
-            image: "https://images.unsplash.com/photo-1530281700549-e82e7bf110d6?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-            publishedDate: new Date(Date.now() - 86400000).toLocaleDateString('en-US', {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric'
-            }),
+            excerpt:
+              "Protect your furry friends from heatstroke and other warm-weather hazards with these veterinarian-approved tips.",
+            image:
+              "https://images.unsplash.com/photo-1530281700549-e82e7bf110d6?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+            publishedDate: new Date(Date.now() - 86400000).toLocaleDateString(
+              "en-US",
+              {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              }
+            ),
             readTime: "5 min read",
             author: "Dr. Michael Chen",
             category: "Seasonal Care",
             views: "2.8k",
             likes: "198",
-            url: "https://www.aspca.org/pet-care/general-pet-care/hot-weather-safety-tips"
+            url: "https://www.aspca.org/pet-care/general-pet-care/hot-weather-safety-tips",
           },
           {
             id: 3,
             title: "Understanding Your Cat's Behavior: A Complete Guide",
-            excerpt: "Decode your feline's mysterious behaviors and learn how to strengthen your bond with your pet.",
-            image: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-            publishedDate: new Date(Date.now() - 172800000).toLocaleDateString('en-US', {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric'
-            }),
+            excerpt:
+              "Decode your feline's mysterious behaviors and learn how to strengthen your bond with your pet.",
+            image:
+              "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+            publishedDate: new Date(Date.now() - 172800000).toLocaleDateString(
+              "en-US",
+              {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              }
+            ),
             readTime: "8 min read",
             author: "Cat Behavior Specialist",
             category: "Cats",
             views: "4.1k",
             likes: "312",
-            url: "https://www.humanesociety.org/resources/understanding-feline-language"
+            url: "https://www.humanesociety.org/resources/understanding-feline-language",
           },
           {
             id: 4,
             title: "Dog Training Fundamentals: Building a Strong Foundation",
-            excerpt: "Professional trainer shares essential techniques for teaching basic commands and good manners.",
-            image: "https://images.unsplash.com/photo-1583511655826-05700d52f4d9?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-            publishedDate: new Date(Date.now() - 259200000).toLocaleDateString('en-US', {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric'
-            }),
+            excerpt:
+              "Professional trainer shares essential techniques for teaching basic commands and good manners.",
+            image:
+              "https://images.unsplash.com/photo-1583511655826-05700d52f4d9?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+            publishedDate: new Date(Date.now() - 259200000).toLocaleDateString(
+              "en-US",
+              {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              }
+            ),
             readTime: "7 min read",
             author: "Certified Dog Trainer",
             category: "Training",
             views: "3.5k",
             likes: "276",
-            url: "https://www.akc.org/expert-advice/training/"
-          }
+            url: "https://www.akc.org/expert-advice/training/",
+          },
         ]);
       } finally {
         setLoading(false);
@@ -179,7 +214,7 @@ const Blog = () => {
 
   const handleReadArticle = (url) => {
     // Open actual news article in new tab
-    window.open(url, '_blank', 'noopener,noreferrer');
+    window.open(url, "_blank", "noopener,noreferrer");
   };
 
   if (loading || !featuredPost) {
@@ -191,7 +226,7 @@ const Blog = () => {
   }
 
   return (
-    <div className=" bg-[#b98a32] w-screen relative left-1/2 right-1/2 -mx-[50vw] overflow-hidden">
+    <div className=" bg-[#b98a32] min-h-screen w-full overflow-hidden pb-10">
       {/* Floating Background Elements */}
       <div className="fixed inset-0 pointer-events-none z-0">
         <div className="absolute top-20 left-10 w-3 h-3 bg-[#b98a32] rounded-full animate-float-gentle opacity-30"></div>
@@ -258,7 +293,8 @@ const Blog = () => {
                     alt={featuredPost.title}
                     className="w-full h-64 lg:h-full object-cover group-hover:scale-110 transition-transform duration-1000"
                     onError={(e) => {
-                      e.target.src = "https://images.unsplash.com/photo-1586671267731-da2cf3ceeb80?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80";
+                      e.target.src =
+                        "https://images.unsplash.com/photo-1586671267731-da2cf3ceeb80?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80";
                     }}
                   />
                   {/* Enhanced Overlay Elements */}
@@ -373,7 +409,8 @@ const Blog = () => {
                       alt={post.title}
                       className="w-full h-48 object-cover group-hover:scale-115 transition-transform duration-1000"
                       onError={(e) => {
-                        e.target.src = "https://images.unsplash.com/photo-1586671267731-da2cf3ceeb80?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80";
+                        e.target.src =
+                          "https://images.unsplash.com/photo-1586671267731-da2cf3ceeb80?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80";
                       }}
                     />
                     <div className="absolute top-4 left-4 bg-gradient-to-r from-[#821b1f] to-[#9d2429] text-white px-3 py-2 rounded-full text-xs font-bold shadow-lg animate-slide-in-left">
@@ -428,7 +465,7 @@ const Blog = () => {
                     </div>
 
                     {/* Enhanced Read More Link */}
-                    <button 
+                    <button
                       onClick={() => handleReadArticle(post.url)}
                       className="w-full bg-[#f7f3ea] border-3 border-[#821b1f] text-[#821b1f] py-4 rounded-xl font-bold hover:bg-[#821b1f] hover:text-white transition-all duration-500 group/btn transform hover:scale-105 hover:-translate-y-1 shadow-lg hover:shadow-xl"
                     >
@@ -468,8 +505,8 @@ const Blog = () => {
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-6 justify-center animate-slide-up-delayed">
-                  <button 
-                    onClick={() => navigate('/blog')}
+                  <button
+                    onClick={() => navigate("/blog")}
                     className="bg-white text-[#821b1f] px-10 py-5 rounded-2xl text-xl font-bold hover:bg-[#f7f3ea] transition-all duration-500 transform hover:scale-110 hover:-translate-y-2 shadow-2xl hover:shadow-3xl group/btn"
                   >
                     <span className="group-hover/btn:animate-pulse">

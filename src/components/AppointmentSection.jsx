@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { client, urlFor } from "../lib/sanity";
 
 const Service = () => {
@@ -14,7 +14,7 @@ const Service = () => {
   if (!data) return null;
 
   return (
-    <div className="w-screen lg:h-screen relative left-1/2 right-1/2 -mx-[50vw] overflow-hidden">
+    <div className="w-full  pb-10w-screen lg:h-screen relative  overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 z-0 w-full h-full">
         {data.backgroundImage && (
