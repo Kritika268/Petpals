@@ -1,10 +1,13 @@
 "use client"
+
 import { useState, useEffect, useRef } from "react"
+import { NavLink } from "react-router-dom"
 import {
   FaGift,
   FaStar,
   FaPaw,
   FaStethoscope,
+  FaPhoneAlt,
   FaCheck,
   FaTimes,
   FaChevronDown,
@@ -14,16 +17,11 @@ import {
   FaShieldAlt,
   FaUsers,
 } from "react-icons/fa"
-import { client } from "../../lib/sanity";
-import { Link} from "react-router-dom";
-import { faqQuery } from "../../lib/queries"
-
 
 const Packages = () => {
   const [isVisible, setIsVisible] = useState({})
+  const [activePackage, setActivePackage] = useState(0)
   const [openFaq, setOpenFaq] = useState(null)
-  const [faqs, setFaqs] = useState([])
-  const [packages, setPackages] = useState([])
   const observerRef = useRef()
   const elementsRef = useRef([])
 
@@ -116,9 +114,38 @@ const Packages = () => {
   ]
 
   // FAQ data
-  useEffect(() => {
-    client.fetch(faqQuery).then(setFaqs)
-  }, [])
+  const faqs = [
+    {
+      id: 1,
+      question: "Can I upgrade my package later?",
+      answer:
+        "Yes! You can upgrade your package at any time. We'll prorate the difference and your new benefits will be available immediately.",
+    },
+    {
+      id: 2,
+      question: "Are unused services carried over?",
+      answer:
+        "Unused services from your package can be carried over for up to 30 days after your package expires, giving you flexibility to use all your benefits.",
+    },
+    {
+      id: 3,
+      question: "How do I book a service included in my package?",
+      answer:
+        "Simply call us or use our online booking system. Mention your package membership and we'll automatically apply your benefits.",
+    },
+    {
+      id: 4,
+      question: "What happens if I need emergency care?",
+      answer:
+        "Premium Care and Ultimate VIP members get priority emergency support. Essential Wellness members receive standard emergency care with package discounts applied.",
+    },
+    {
+      id: 5,
+      question: "Can I cancel my package?",
+      answer:
+        "Yes, you can cancel anytime with 30 days notice. We'll help you use any remaining benefits before your cancellation takes effect.",
+    },
+  ]
 
   // Comparison features
   const comparisonFeatures = [
@@ -155,7 +182,7 @@ const Packages = () => {
         observerRef.current.disconnect()
       }
     }
-  }, [packages])
+  }, [])
 
   const addToRefs = (el, index) => {
     if (el && !elementsRef.current.includes(el)) {
@@ -169,7 +196,7 @@ const Packages = () => {
 
   return (
     <>
-      <style jsx="true" global="true">{`
+      <style jsx>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Lato:wght@300;400;700&display=swap');
         
         /* Custom Keyframe Animations */
@@ -403,10 +430,9 @@ const Packages = () => {
         }
 
         .btn-primary:hover {
-          background: #f7f3ea;
-          color: #821b1f;
+          background: #b98a32;
           transform: translateY(-2px);
-          box-shadow: 0 10px 25px rgba(247, 243, 234, 0.3);
+          box-shadow: 0 10px 25px rgba(185, 138, 50, 0.3);
         }
 
         /* Card Hover Effects */
@@ -421,7 +447,7 @@ const Packages = () => {
 
         /* Popular Badge */
         .popular-badge {
-          background: linear-gradient(135deg, #821b1f 0%, #f7f3ea 100%);
+          background: linear-gradient(135deg, #821b1f 0%, #b98a32 100%);
           animation: pulseGentle 2s infinite;
         }
 
@@ -438,7 +464,7 @@ const Packages = () => {
 
         /* Gradient Text */
         .gradient-text {
-          background: linear-gradient(135deg, #821b1f 0%, #f7f3ea 100%);
+          background: linear-gradient(135deg, #821b1f 0%, #b98a32 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -452,19 +478,15 @@ const Packages = () => {
 
         /* Responsive Text */
         .text-responsive-xl {
-          font-size: clamp(1.5rem, 5vw, 3rem);
+          font-size: clamp(2rem, 5vw, 4rem);
         }
 
         .text-responsive-lg {
-          font-size: clamp(1.25rem, 4vw, 2rem);
+          font-size: clamp(1.5rem, 4vw, 2.5rem);
         }
 
         .text-responsive-md {
-          font-size: clamp(1rem, 3vw, 1.5rem);
-        }
-
-        .text-responsive-sm {
-          font-size: clamp(0.875rem, 2.5vw, 1.25rem);
+          font-size: clamp(1.25rem, 3vw, 1.75rem);
         }
 
         /* Stagger Animation Delays */
@@ -502,32 +524,33 @@ const Packages = () => {
       `}</style>
 
       <div
-        className="min-h-screen bg-pattern font-sans overflow-x-hidden"
+        className="bg-[#b98a32] min-h-screen w-screen relative left-1/2 right-1/2 -mx-[50vw] overflow-hidden pb-10"
+
         style={{ backgroundColor: "#f7f3ea", fontFamily: "Inter, Lato, sans-serif" }}
       >
         {/* Header Section */}
         <header
           ref={(el) => addToRefs(el, 0)}
           data-animate="header"
-          className={`text-center py-12 md:py-16 px-4 transition-all duration-1000 ${
+          className={`text-center py-16 px-4 transition-all duration-1000 ${
             isVisible.header ? "animate-fade-in" : "opacity-0 translate-y-8"
           }`}
         >
           <div className="max-w-6xl mx-auto">
-            <div className="flex items-center justify-center mb-4 md:mb-6">
+            <div className="flex items-center justify-center mb-6">
               <FaGift
-                className="text-4xl md:text-6xl animate-bounce-gentle hover-scale cursor-pointer mr-2 md:mr-4 animate-wiggle"
-                style={{ color: "#f7f3ea" }}
+                className="text-6xl animate-bounce-gentle hover-scale cursor-pointer mr-4 animate-wiggle"
+                style={{ color: "#b98a32" }}
               />
               <h1 className="text-responsive-xl font-bold gradient-text tracking-tight">
                 Membership & Service Packages
               </h1>
             </div>
-            <p className="text-responsive-md font-medium mb-4 md:mb-6 text-white">
+            <p className="text-responsive-md font-medium mb-6" style={{ color: "#821b1f" }}>
               Flexible plans for every pet and every family.
             </p>
             <div className="max-w-4xl mx-auto">
-              <p className="text-responsive-sm leading-relaxed text-white opacity-90">
+              <p className="text-lg leading-relaxed" style={{ color: "#8b7355" }}>
                 Choose from our thoughtfully designed packages to give your pet the best care, value, and convenience.
                 Whether you're looking for unlimited consultations, grooming bundles, or wellness plans, we have
                 something for every need.
@@ -537,44 +560,43 @@ const Packages = () => {
         </header>
 
         {/* Packages Grid Section */}
-        {packages.length > 0 && (
-          <section className="py-12 md:py-16 px-4">
-            <div className="max-w-7xl mx-auto">
-              <div
-                ref={(el) => addToRefs(el, 1)}
-                data-animate="packages-title"
-                className={`text-center mb-8 md:mb-12 transition-all duration-1000 ${
-                  isVisible["packages-title"] ? "animate-slide-up" : "opacity-0 translate-y-8"
-                }`}
-              >
-                <h2 className="text-responsive-lg font-bold mb-2 md:mb-4 text-white">
-                  Choose Your Perfect Plan
-                </h2>
-                <p className="text-responsive-sm max-w-2xl mx-auto text-white opacity-90">
-                  Designed with your pet's health and your peace of mind in focus.
-                </p>
-              </div>
+        <section className="py-16 px-4">
+          <div className="max-w-7xl mx-auto">
+            <div
+              ref={(el) => addToRefs(el, 1)}
+              data-animate="packages-title"
+              className={`text-center mb-12 transition-all duration-1000 ${
+                isVisible["packages-title"] ? "animate-slide-up" : "opacity-0 translate-y-8"
+              }`}
+            >
+              <h2 className="text-responsive-lg font-bold mb-4" style={{ color: "#821b1f" }}>
+                Choose Your Perfect Plan
+              </h2>
+              <p className="text-lg max-w-2xl mx-auto" style={{ color: "#8b7355" }}>
+                Designed with your pet's health and your peace of mind in focus.
+              </p>
+            </div>
 
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                {packages.map((pkg, index) => {
-                  const IconComponent = pkg.icon
-                  return (
-                    <div
-                      key={pkg.id}
-                      ref={(el) => addToRefs(el, index + 10)}
-                      data-animate={`package-${pkg.id}`}
-                      className={`relative bg-white rounded-2xl md:rounded-3xl p-6 md:p-8 shadow-lg card-hover hover-glow transition-all duration-1000 ${
-                        isVisible[`package-${pkg.id}`] ? `animate-scale-in stagger-${index + 1}` : "opacity-0 scale-90"
-                      } ${pkg.popular ? "ring-4 ring-opacity-50" : ""}`}
-                      style={{ ringColor: pkg.popular ? "#f7f3ea" : "transparent" }}
-                    >
-                      {pkg.popular && (
-                        <div className="absolute -top-3 md:-top-4 left-1/2 transform -translate-x-1/2">
-                          <div className="popular-badge text-white px-4 md:px-6 py-1 md:py-2 rounded-full text-xs md:text-sm font-bold">
-                            Most Popular
-                          </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {packages.map((pkg, index) => {
+                const IconComponent = pkg.icon
+                return (
+                  <div
+                    key={pkg.id}
+                    ref={(el) => addToRefs(el, index + 10)}
+                    data-animate={`package-${pkg.id}`}
+                    className={`relative bg-white rounded-3xl p-8 shadow-lg card-hover hover-glow transition-all duration-1000 ${
+                      isVisible[`package-${pkg.id}`] ? `animate-scale-in stagger-${index + 1}` : "opacity-0 scale-90"
+                    } ${pkg.popular ? "ring-4 ring-opacity-50" : ""}`}
+                    style={{ ringColor: pkg.popular ? "#b98a32" : "transparent" }}
+                  >
+                    {pkg.popular && (
+                      <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                        <div className="popular-badge text-white px-6 py-2 rounded-full text-sm font-bold">
+                          Most Popular
                         </div>
-                      )}
+                      </div>
+                    )}
 
                     <div className="text-center mb-6">
                       <div
@@ -595,51 +617,47 @@ const Packages = () => {
                       <p className="text-gray-600 leading-relaxed mb-6">{pkg.description}</p>
                     </div>
 
-                      <div className="space-y-2 md:space-y-3 mb-6 md:mb-8">
-                        {pkg.benefits.map((benefit, benefitIndex) => (
-                          <div key={benefitIndex} className="flex items-center gap-2 md:gap-3">
-                            <div
-                              className="flex-shrink-0 w-4 h-4 md:w-5 md:h-5 rounded-full flex items-center justify-center animate-checkmark"
-                              style={{ backgroundColor: "#b98a3220" }}
-                            >
-                              <FaCheck className="text-xs" style={{ color: "#b98a32" }} />
-                            </div>
-                            <span className="text-gray-700 text-sm md:text-base">{benefit}</span>
+                    <div className="space-y-3 mb-8">
+                      {pkg.benefits.map((benefit, benefitIndex) => (
+                        <div key={benefitIndex} className="flex items-center gap-3">
+                          <div
+                            className="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center animate-checkmark"
+                            style={{ backgroundColor: "#b98a3220" }}
+                          >
+                            <FaCheck className="text-xs" style={{ color: "#b98a32" }} />
                           </div>
-                        ))}
-                      </div>
-
-                      <Link to="/plans">
-                        <button className="w-full btn-primary text-white py-3 md:py-4 px-4 md:px-6 rounded-xl font-semibold text-base md:text-lg">
-                          Choose Plan
-                        </button>
-                      </Link>
+                          <span className="text-gray-700">{benefit}</span>
+                        </div>
+                      ))}
                     </div>
-                  )
-                })}
-              </div>
+
+                    <button className="w-full btn-primary text-white py-4 px-6 rounded-xl font-semibold text-lg">
+                      Choose Plan
+                    </button>
+                  </div>
+                )
+              })}
             </div>
-          </section>
-        )}
+          </div>
+        </section>
 
         {/* Comparison Table Section */}
-        {packages.length > 0 && (
-          <section className="py-12 md:py-16 px-4" style={{ backgroundColor: "rgba(247, 243, 234, 0.9)" }}>
-            <div className="max-w-6xl mx-auto">
-              <div
-                ref={(el) => addToRefs(el, 20)}
-                data-animate="comparison-title"
-                className={`text-center mb-8 md:mb-12 transition-all duration-1000 ${
-                  isVisible["comparison-title"] ? "animate-fade-in" : "opacity-0 translate-y-8"
-                }`}
-              >
-                <h2 className="text-responsive-lg font-bold mb-2 md:mb-4 text-[#821b1f]">
-                  Compare All Plans
-                </h2>
-                <p className="text-responsive-sm max-w-2xl mx-auto text-[#5e3a1f]">
-                  See exactly what's included in each package at a glance.
-                </p>
-              </div>
+        <section className="py-16 px-4" style={{ backgroundColor: "rgba(255, 255, 255, 0.5)" }}>
+          <div className="max-w-6xl mx-auto">
+            <div
+              ref={(el) => addToRefs(el, 20)}
+              data-animate="comparison-title"
+              className={`text-center mb-12 transition-all duration-1000 ${
+                isVisible["comparison-title"] ? "animate-fade-in" : "opacity-0 translate-y-8"
+              }`}
+            >
+              <h2 className="text-responsive-lg font-bold mb-4" style={{ color: "#821b1f" }}>
+                Compare All Plans
+              </h2>
+              <p className="text-lg max-w-2xl mx-auto" style={{ color: "#8b7355" }}>
+                See exactly what's included in each package at a glance.
+              </p>
+            </div>
 
             <div
               ref={(el) => addToRefs(el, 21)}
@@ -692,51 +710,51 @@ const Packages = () => {
         </section>
 
         {/* FAQ Section */}
-        <section className="py-12 md:py-16 px-4">
+        <section className="py-16 px-4">
           <div className="max-w-4xl mx-auto">
             <div
               ref={(el) => addToRefs(el, 30)}
               data-animate="faq-title"
-              className={`text-center mb-8 md:mb-12 transition-all duration-1000 ${
+              className={`text-center mb-12 transition-all duration-1000 ${
                 isVisible["faq-title"] ? "animate-fade-in" : "opacity-0 translate-y-8"
               }`}
             >
-              <h2 className="text-responsive-lg font-bold mb-2 md:mb-4 text-white">
+              <h2 className="text-responsive-lg font-bold mb-4" style={{ color: "#821b1f" }}>
                 Frequently Asked Questions
               </h2>
-              <p className="text-responsive-sm text-white opacity-90">
+              <p className="text-lg" style={{ color: "#8b7355" }}>
                 Everything you need to know about our packages.
               </p>
             </div>
 
-            <div className="space-y-3 md:space-y-4">
+            <div className="space-y-4">
               {faqs.map((faq, index) => (
                 <div
-                  key={faq._id}
+                  key={faq.id}
                   ref={(el) => addToRefs(el, index + 40)}
-                  data-animate={`faq-${faq._id}`}
-                  className={`bg-white rounded-xl md:rounded-2xl shadow-lg overflow-hidden transition-all duration-1000 ${
-                    isVisible[`faq-${faq._id}`]
+                  data-animate={`faq-${faq.id}`}
+                  className={`bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-1000 ${
+                    isVisible[`faq-${faq.id}`]
                       ? `animate-slide-up stagger-${(index % 3) + 1}`
                       : "opacity-0 translate-y-8"
                   }`}
                 >
                   <button
-                    onClick={() => toggleFaq(faq._id)}
-                    className="w-full p-4 md:p-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-200"
+                    onClick={() => toggleFaq(faq.id)}
+                    className="w-full p-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-200"
                   >
-                    <span className="font-semibold text-base md:text-lg text-[#821b1f]">
+                    <span className="font-semibold text-lg" style={{ color: "#821b1f" }}>
                       {faq.question}
                     </span>
-                    {openFaq === faq._id ? (
+                    {openFaq === faq.id ? (
                       <FaChevronUp style={{ color: "#b98a32" }} />
                     ) : (
                       <FaChevronDown style={{ color: "#b98a32" }} />
                     )}
                   </button>
-                  <div className={`accordion-content ${openFaq === faq._id ? "open" : ""}`}>
-                    <div className="px-4 md:px-6 pb-4 md:pb-6">
-                      <p className="text-gray-700 leading-relaxed text-sm md:text-base">{faq.answer}</p>
+                  <div className={`accordion-content ${openFaq === faq.id ? "open" : ""}`}>
+                    <div className="px-6 pb-6">
+                      <p className="text-gray-700 leading-relaxed">{faq.answer}</p>
                     </div>
                   </div>
                 </div>
@@ -749,34 +767,34 @@ const Packages = () => {
         <section
           ref={(el) => addToRefs(el, 50)}
           data-animate="cta"
-          className={`py-12 md:py-16 px-4 transition-all duration-1000 ${
+          className={`py-16 px-4 transition-all duration-1000 ${
             isVisible.cta ? "animate-slide-up" : "opacity-0 translate-y-8"
           }`}
         >
           <div className="max-w-4xl mx-auto text-center">
             <div
-              className="rounded-2xl md:rounded-3xl p-8 md:p-12 shadow-2xl hover-lift"
-              style={{ background: "linear-gradient(135deg, #821b1f 0%, #5e3a1f 100%)" }}
+              className="rounded-3xl p-12 shadow-2xl hover-lift"
+              style={{ background: "linear-gradient(135deg, #821b1f 0%, #b98a32 100%)" }}
             >
               <div className="text-white relative">
                 <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
-                  <FaPaw className="absolute top-2 md:top-4 left-2 md:left-4 text-2xl md:text-4xl animate-float" />
-                  <FaHeart className="absolute top-4 md:top-8 right-4 md:right-8 text-xl md:text-3xl animate-pulse-gentle" />
-                  <FaUsers className="absolute bottom-2 md:bottom-4 right-2 md:right-4 text-2xl md:text-4xl animate-bounce-gentle" />
+                  <FaPaw className="absolute top-4 left-4 text-4xl animate-float" />
+                  <FaHeart className="absolute top-8 right-8 text-3xl animate-pulse-gentle" />
+                  <FaUsers className="absolute bottom-4 right-4 text-4xl animate-bounce-gentle" />
                 </div>
                 <div className="relative z-10">
-                  <h2 className="text-responsive-md font-bold mb-4 md:mb-6">Not sure which package is right for you?</h2>
-                  <p className="text-lg md:text-xl mb-6 md:mb-8 opacity-90 leading-relaxed">
+                  <h2 className="text-responsive-md font-bold mb-6">Not sure which package is right for you?</h2>
+                  <p className="text-xl mb-8 opacity-90 leading-relaxed">
                     Contact our team for personalized recommendations!
                   </p>
-                  <Link to="/about/contact" style={{ textDecoration: "none" }}>
+                  <NavLink to="/about/contact" style={{ textDecoration: "none" }}>
                     <button
-                      className="bg-white font-bold py-3 md:py-4 px-6 md:px-10 rounded-xl md:rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl text-base md:text-lg hover-glow inline-flex items-center gap-2 md:gap-3"
+                      className="bg-white font-bold py-4 px-10 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl text-lg hover-glow inline-flex items-center gap-3"
                       style={{ color: "#821b1f" }}
                     >
                       Contact Us
                     </button>
-                  </Link>
+                  </NavLink>
                 </div>
               </div>
             </div>
@@ -785,13 +803,13 @@ const Packages = () => {
 
         {/* Floating Decorative Elements */}
         <div className="fixed top-1/4 left-4 opacity-5 pointer-events-none">
-          <FaGift className="text-4xl md:text-8xl animate-float" style={{ color: "#f7f3ea" }} />
+          <FaGift className="text-8xl animate-float" style={{ color: "#b98a32" }} />
         </div>
         <div className="fixed top-1/3 right-4 opacity-5 pointer-events-none">
-          <FaStar className="text-3xl md:text-6xl animate-pulse-gentle" style={{ color: "#821b1f" }} />
+          <FaStar className="text-6xl animate-pulse-gentle" style={{ color: "#821b1f" }} />
         </div>
         <div className="fixed bottom-1/4 left-8 opacity-5 pointer-events-none">
-          <FaShieldAlt className="text-4xl md:text-7xl animate-bounce-gentle" style={{ color: "#A2B29F" }} />
+          <FaShieldAlt className="text-7xl animate-bounce-gentle" style={{ color: "#A2B29F" }} />
         </div>
       </div>
     </>
