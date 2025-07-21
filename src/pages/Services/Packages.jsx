@@ -27,36 +27,93 @@ const Packages = () => {
   const observerRef = useRef()
   const elementsRef = useRef([])
 
-  // Fetch packages from Sanity
-  useEffect(() => {
-    const fetchPackages = async () => {
-      const data = await client.fetch(`*[_type == "membership"] | order(_createdAt asc)`)
-      // Map Sanity data to our package structure
-      const mappedPackages = data.map((pkg, index) => ({
-        id: pkg._id,
-        name: pkg.time,
-        price: `₹${pkg.price}`,
-        period: pkg.time.includes('Month') ? `${pkg.time.replace('Month', '')} months` : pkg.time,
-        description: `Comprehensive ${pkg.time.toLowerCase()} care for your pet`,
-        icon: index === 0 ? FaStethoscope : index === 1 ? FaCrown : FaStar,
-        color: index === 1 ? "#821b1f" : "#f7f3ea",
-        popular: index === 1, // Make the middle one popular
-        benefits: pkg.benefits || [],
-        features: {
-          consultations: index === 0 ? "2" : "Unlimited",
-          vaccinations: index === 0 ? "1" : index === 1 ? "2" : "Unlimited",
-          grooming: index === 0 ? "10% off" : index === 1 ? "2 sessions" : "4 sessions",
-          pharmacy: index === 0 ? "5% off" : index === 1 ? "15% off" : "20% off",
-          emergency: index !== 0,
-          healthScreening: index === 2,
-          events: index === 2,
-        }
-      }))
-      setPackages(mappedPackages)
-    }
-
-    fetchPackages()
-  }, [])
+  // Packages data
+  const packages = [
+    {
+      id: 1,
+      name: "Essential Wellness",
+      price: "₹999",
+      period: "3 months",
+      description: "Perfect for routine checkups and preventive care.",
+      icon: FaStethoscope,
+      color: "#b98a32",
+      popular: false,
+      benefits: [
+        "2 consultations",
+        "1 vaccination",
+        "10% off grooming",
+        "Priority booking",
+        "Health record maintenance",
+        "Basic nutrition advice",
+      ],
+      features: {
+        consultations: "2",
+        vaccinations: "1",
+        grooming: "10% off",
+        pharmacy: "5% off",
+        emergency: false,
+        healthScreening: false,
+        events: false,
+      },
+    },
+    {
+      id: 2,
+      name: "Premium Care",
+      price: "₹2,499",
+      period: "6 months",
+      description: "Comprehensive health and pampering for your pet.",
+      icon: FaCrown,
+      color: "#821b1f",
+      popular: true,
+      benefits: [
+        "Unlimited consultations",
+        "2 vaccinations",
+        "2 grooming sessions",
+        "15% off pharmacy",
+        "Telehealth support",
+        "Nutrition counseling",
+        "Dental checkup",
+      ],
+      features: {
+        consultations: "Unlimited",
+        vaccinations: "2",
+        grooming: "2 sessions",
+        pharmacy: "15% off",
+        emergency: true,
+        healthScreening: false,
+        events: false,
+      },
+    },
+    {
+      id: 3,
+      name: "Ultimate VIP",
+      price: "₹4,999",
+      period: "1 year",
+      description: "All-inclusive care for your furry family member.",
+      icon: FaStar,
+      color: "#b98a32",
+      popular: false,
+      benefits: [
+        "Unlimited everything",
+        "Annual health screening",
+        "4 grooming sessions",
+        "Emergency support 24/7",
+        "Exclusive events access",
+        "Personal vet coordinator",
+        "Home visit included",
+        "Premium boarding discount",
+      ],
+      features: {
+        consultations: "Unlimited",
+        vaccinations: "Unlimited",
+        grooming: "4 sessions",
+        pharmacy: "20% off",
+        emergency: true,
+        healthScreening: true,
+        events: true,
+      },
+    },
+  ]
 
   // FAQ data
   useEffect(() => {
@@ -445,8 +502,8 @@ const Packages = () => {
       `}</style>
 
       <div
-        className="full-width-breakout"
-        style={{ backgroundColor: "#b98a32", fontFamily: "Inter, Lato, sans-serif" }}
+        className="min-h-screen bg-pattern font-sans overflow-x-hidden"
+        style={{ backgroundColor: "#f7f3ea", fontFamily: "Inter, Lato, sans-serif" }}
       >
         {/* Header Section */}
         <header
@@ -519,24 +576,24 @@ const Packages = () => {
                         </div>
                       )}
 
-                      <div className="text-center mb-4 md:mb-6">
-                        <div
-                          className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full mb-3 md:mb-4 hover-scale"
-                          style={{ backgroundColor: `${pkg.color}20` }}
-                        >
-                          <IconComponent className="text-3xl md:text-4xl" style={{ color: pkg.color }} />
-                        </div>
-                        <h3 className="text-xl md:text-2xl font-bold mb-2 text-[#821b1f]">
-                          {pkg.name}
-                        </h3>
-                        <div className="mb-3 md:mb-4">
-                          <span className="text-3xl md:text-4xl font-bold text-[#b98a32]">
-                            {pkg.price}
-                          </span>
-                          <span className="text-gray-600 ml-2">/ {pkg.period}</span>
-                        </div>
-                        <p className="text-gray-600 leading-relaxed mb-4 md:mb-6 text-sm md:text-base">{pkg.description}</p>
+                    <div className="text-center mb-6">
+                      <div
+                        className="inline-flex items-center justify-center w-20 h-20 rounded-full mb-4 hover-scale"
+                        style={{ backgroundColor: `${pkg.color}20` }}
+                      >
+                        <IconComponent className="text-4xl" style={{ color: pkg.color }} />
                       </div>
+                      <h3 className="text-2xl font-bold mb-2" style={{ color: "#821b1f" }}>
+                        {pkg.name}
+                      </h3>
+                      <div className="mb-4">
+                        <span className="text-4xl font-bold" style={{ color: "#b98a32" }}>
+                          {pkg.price}
+                        </span>
+                        <span className="text-gray-600 ml-2">/ {pkg.period}</span>
+                      </div>
+                      <p className="text-gray-600 leading-relaxed mb-6">{pkg.description}</p>
+                    </div>
 
                       <div className="space-y-2 md:space-y-3 mb-6 md:mb-8">
                         {pkg.benefits.map((benefit, benefitIndex) => (
@@ -584,56 +641,55 @@ const Packages = () => {
                 </p>
               </div>
 
-              <div
-                ref={(el) => addToRefs(el, 21)}
-                data-animate="comparison-table"
-                className={`overflow-x-auto transition-all duration-1000 ${
-                  isVisible["comparison-table"] ? "animate-slide-up" : "opacity-0 translate-y-8"
-                }`}
-              >
-                <table className="comparison-table w-full bg-white rounded-xl md:rounded-2xl shadow-lg overflow-hidden">
-                  <thead>
-                    <tr style={{ backgroundColor: "#f7f3ea" }}>
-                      <th className="p-3 md:p-4 text-left font-bold text-[#821b1f] text-sm md:text-base">
-                        Features
+            <div
+              ref={(el) => addToRefs(el, 21)}
+              data-animate="comparison-table"
+              className={`overflow-x-auto transition-all duration-1000 ${
+                isVisible["comparison-table"] ? "animate-slide-up" : "opacity-0 translate-y-8"
+              }`}
+            >
+              <table className="comparison-table w-full bg-white rounded-2xl shadow-lg overflow-hidden">
+                <thead>
+                  <tr style={{ backgroundColor: "#f7f3ea" }}>
+                    <th className="p-4 text-left font-bold" style={{ color: "#821b1f" }}>
+                      Features
+                    </th>
+                    {packages.map((pkg) => (
+                      <th key={pkg.id} className="p-4 text-center font-bold" style={{ color: "#821b1f" }}>
+                        <div className="flex flex-col items-center">
+                          <span>{pkg.name}</span>
+                          <span className="text-sm font-normal text-gray-600">{pkg.price}</span>
+                        </div>
                       </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {comparisonFeatures.map((feature, index) => (
+                    <tr key={feature.key} className={index % 2 === 0 ? "bg-gray-50" : "bg-white"}>
+                      <td className="p-4 font-medium" style={{ color: "#8b7355" }}>
+                        {feature.name}
+                      </td>
                       {packages.map((pkg) => (
-                        <th key={pkg.id} className="p-3 md:p-4 text-center font-bold text-[#821b1f] text-sm md:text-base">
-                          <div className="flex flex-col items-center">
-                            <span>{pkg.name}</span>
-                            <span className="text-xs md:text-sm font-normal text-gray-600">{pkg.price}</span>
-                          </div>
-                        </th>
+                        <td key={pkg.id} className="p-4 text-center">
+                          {typeof pkg.features[feature.key] === "boolean" ? (
+                            pkg.features[feature.key] ? (
+                              <FaCheck className="mx-auto text-green-500" />
+                            ) : (
+                              <FaTimes className="mx-auto text-gray-400" />
+                            )
+                          ) : (
+                            <span style={{ color: "#b98a32" }}>{pkg.features[feature.key]}</span>
+                          )}
+                        </td>
                       ))}
                     </tr>
-                  </thead>
-                  <tbody>
-                    {comparisonFeatures.map((feature, index) => (
-                      <tr key={feature.key} className={index % 2 === 0 ? "bg-gray-50" : "bg-white"}>
-                        <td className="p-3 md:p-4 font-medium text-[#5e3a1f] text-sm md:text-base">
-                          {feature.name}
-                        </td>
-                        {packages.map((pkg) => (
-                          <td key={pkg.id} className="p-3 md:p-4 text-center text-sm md:text-base">
-                            {typeof pkg.features[feature.key] === "boolean" ? (
-                              pkg.features[feature.key] ? (
-                                <FaCheck className="mx-auto text-green-500" />
-                              ) : (
-                                <FaTimes className="mx-auto text-gray-400" />
-                              )
-                            ) : (
-                              <span style={{ color: "#b98a32" }}>{pkg.features[feature.key]}</span>
-                            )}
-                          </td>
-                        ))}
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+                  ))}
+                </tbody>
+              </table>
             </div>
-          </section>
-        )}
+          </div>
+        </section>
 
         {/* FAQ Section */}
         <section className="py-12 md:py-16 px-4">
